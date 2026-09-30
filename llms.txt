@@ -1,0 +1,45 @@
+# Digil David
+
+> Senior Product Designer & AI Experience Lead based in Dubai, UAE. Leads product design at Würth UAE and builds full-stack, AI and agentic AI products independently.
+
+Digil David has 8+ years of experience in UI/UX and product design. He currently leads product design at Würth UAE (since July 2020), where he redesigned B2B/B2C e-commerce checkout flows for an 18% conversion lift, built a Figma design system that improved dev handoff efficiency by 30%, and integrated AI workflows (prompt engineering, VEO3) that cut external creative video costs by 40%.
+
+Beyond design, he is a full-stack developer working with React, Next.js, Node.js, Python and SQL, and builds AI, agentic AI and LLM/SLM-driven products, including WhatsApp commerce ordering systems, AI voice calling agents, and an Excel AI add-in.
+
+## Contact
+- Email: daviddigil@ymail.com
+- Phone: +971 54 737 8597
+- LinkedIn: https://www.linkedin.com/in/daviddigil
+- GitHub: https://github.com/daviddigil/
+
+## Work history
+- Würth UAE, Dubai — Senior UI/UX Designer & Product Design Lead (July 2020–Present)
+- Crystal Media, Dubai — Graphic Designer / UX Designer (Oct 2019–May 2020)
+- Cloudhunt Technologies, India — Graphic Web Designer (May 2018–Sept 2019)
+
+## Design projects
+- Würth UAE eShop — B2B e-commerce experience (https://eshop.wurth.ae)
+- Nextipz — QR-code tipping app for hospitality staff in the UAE (Figma prototype)
+- NexNowGo — Product design file (Figma)
+- Nursing Job Pro — Healthcare jobs marketplace app (Figma)
+- Tamil Calendar 2026 — Calendar app for Tamil-speaking users (Figma)
+- Boodoo — Astrology, horoscope and community app (Figma)
+
+## Coding / product projects
+- ChatCart Pro — WhatsApp-native AI commerce ordering platform for restaurants and grocery stores, live with a pilot supermarket in Tamil Nadu, India (https://chatcartpro.com)
+- People Core HR — HR SaaS demo prototype (https://peoplecorehr-demoprototype.vercel.app/)
+- EduPulse — School management SaaS with four role-based workspaces, built on Next.js 14
+- SheetMind AI — Excel add-in that lets users query spreadsheets with an LLM, sold on Gumroad
+- VoicePilot — AI voice agent platform concept for Tamil, Malayalam and Hindi speakers
+- Shift Breaker — Open-source app (https://github.com/daviddigil/shiftbreaker)
+
+## Skills
+Product & UX design, design systems, DesignOps, AI experience design, Figma, React, Next.js, Node.js, Python, SQL, Docker, Azure, LLM orchestration, agentic AI, small language models (SLMs), WhatsApp Cloud API, voice agents, email marketing (HTML/CSS newsletters, automation, push notifications), generative video (Runway, Kling AI, Higgsfield, Midjourney, ElevenLabs, CapCut).
+
+## Certifications
+Product Design Certification (EDOXI), Foundations of UX Design (Google/Coursera), Microsoft Advertising Certified Professional, Google Digital Marketing Certification.
+
+## Education
+Bachelor of Engineering, Computer Engineering — Anna University, Chennai.
+
+Full portfolio: https://daviddigil.com/
