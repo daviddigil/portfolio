@@ -107,6 +107,25 @@
   ]
 }
 </script>
+
+<!-- Favicon: flaticon-style "D" monogram -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="mask-icon" href="favicon.svg" color="#7FE9FF">
+<meta name="theme-color" content="#050B14">
+
+<!-- Tailwind: used for new/updated markup only (interactive timelines, 2027-trend touches). Existing hand-written CSS below is untouched and still drives the threads theme, canvas reveal and GSAP motion. -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {core:'#E6FDFF',cyan:'#7FE9FF',blue:'#3A7BFF',violet:'#9B6BFF',magenta:'#FF5FD2',ink:'#050B14',surface:'#0A1422',muted:'#8FA3B8'},
+        fontFamily: {serif:['Fraunces','Georgia','serif'],sans:['Inter','system-ui','sans-serif'],mono:['JetBrains Mono','monospace']},
+        boxShadow: {glow:'0 0 24px rgba(127,233,255,.25)',glowlg:'0 0 40px rgba(127,233,255,.3)'}
+      }
+    }
+  };
+</script>
 <style>
 :root{
   --bg:#0b0b0d; --bg2:#121216; --card:#16161b; --line:#26262d;
@@ -565,13 +584,63 @@ nav:not(.solid) .btn::after{display:none}
         <p class="lead">I design the product and I write the code behind it. My path runs from computer engineering to full-stack apps, then LLM products, agentic AI and small language models.</p>
       </div>
     </div>
-    <ol class="tl rv">
-      <li><em>01</em><div><h3>Engineering roots</h3><p>B.E. in Computer Engineering from Anna University, Chennai. Design and code have been part of the same toolbox from the start.</p></div></li>
-      <li><em>02</em><div><h3>Full-stack shipping</h3><p>React and Next.js front ends, Node.js and Python back ends, SQL, Docker and Azure. EduPulse is a Next.js 14 platform with four role-based workspaces.</p></div></li>
-      <li><em>03</em><div><h3>LLMs in real products</h3><p>SheetMind AI puts a language model inside Excel. ChatCart Pro adds an AI chatbot and WhatsApp Cloud API ordering for businesses.</p></div></li>
-      <li><em>04</em><div><h3>Agentic AI</h3><p>Voice and chat agents that do work, not just answer: taking orders, syncing stock with a POS and handing off to people. VoicePilot extends this to Tamil, Malayalam and Hindi.</p></div></li>
-      <li><em>05</em><div><h3>Small models, right-sized</h3><p>Choosing an SLM when a smaller, cheaper or more private model is enough, and a larger LLM when the task needs it.</p></div></li>
-    </ol>
+    <div class="rv" data-timeline="dev">
+      <div class="relative">
+        <!-- progress spine, fills as you step through -->
+        <div class="absolute left-0 right-0 top-[27px] h-[2px] bg-white/10 rounded-full overflow-hidden md:block hidden">
+          <div class="dt-fill h-full bg-gradient-to-r from-cyan via-blue to-violet shadow-glow transition-[width] duration-500 ease-out" style="width:20%"></div>
+        </div>
+        <div class="flex md:justify-between gap-3 md:gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0 snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0">
+          <button type="button" class="dt-step group relative flex-shrink-0 w-[168px] md:w-auto md:flex-1 snap-start text-left outline-none" data-i="0" aria-expanded="true">
+            <span class="dt-dot relative z-10 flex items-center justify-center w-[15px] h-[15px] rounded-full border-2 border-cyan/40 bg-ink mx-auto md:mx-0 transition-all duration-300 group-hover:border-cyan"><span class="dt-core w-[7px] h-[7px] rounded-full bg-cyan scale-0 transition-transform duration-300"></span></span>
+            <span class="block mt-3 font-mono text-[.68rem] tracking-[.1em] uppercase text-cyan/70 group-hover:text-cyan transition-colors">01 · 2018</span>
+            <span class="dt-title block mt-1 font-serif text-[1.05rem] leading-tight text-muted group-hover:text-[color:var(--text)] transition-colors">Engineering roots</span>
+          </button>
+          <button type="button" class="dt-step group relative flex-shrink-0 w-[168px] md:w-auto md:flex-1 snap-start text-left outline-none" data-i="1" aria-expanded="false">
+            <span class="dt-dot relative z-10 flex items-center justify-center w-[15px] h-[15px] rounded-full border-2 border-cyan/40 bg-ink mx-auto md:mx-0 transition-all duration-300 group-hover:border-cyan"><span class="dt-core w-[7px] h-[7px] rounded-full bg-cyan scale-0 transition-transform duration-300"></span></span>
+            <span class="block mt-3 font-mono text-[.68rem] tracking-[.1em] uppercase text-cyan/70 group-hover:text-cyan transition-colors">02 · 2019–20</span>
+            <span class="dt-title block mt-1 font-serif text-[1.05rem] leading-tight text-muted group-hover:text-[color:var(--text)] transition-colors">Full-stack shipping</span>
+          </button>
+          <button type="button" class="dt-step group relative flex-shrink-0 w-[168px] md:w-auto md:flex-1 snap-start text-left outline-none" data-i="2" aria-expanded="false">
+            <span class="dt-dot relative z-10 flex items-center justify-center w-[15px] h-[15px] rounded-full border-2 border-cyan/40 bg-ink mx-auto md:mx-0 transition-all duration-300 group-hover:border-cyan"><span class="dt-core w-[7px] h-[7px] rounded-full bg-cyan scale-0 transition-transform duration-300"></span></span>
+            <span class="block mt-3 font-mono text-[.68rem] tracking-[.1em] uppercase text-cyan/70 group-hover:text-cyan transition-colors">03 · 2021–23</span>
+            <span class="dt-title block mt-1 font-serif text-[1.05rem] leading-tight text-muted group-hover:text-[color:var(--text)] transition-colors">LLMs in real products</span>
+          </button>
+          <button type="button" class="dt-step group relative flex-shrink-0 w-[168px] md:w-auto md:flex-1 snap-start text-left outline-none" data-i="3" aria-expanded="false">
+            <span class="dt-dot relative z-10 flex items-center justify-center w-[15px] h-[15px] rounded-full border-2 border-cyan/40 bg-ink mx-auto md:mx-0 transition-all duration-300 group-hover:border-cyan"><span class="dt-core w-[7px] h-[7px] rounded-full bg-cyan scale-0 transition-transform duration-300"></span></span>
+            <span class="block mt-3 font-mono text-[.68rem] tracking-[.1em] uppercase text-cyan/70 group-hover:text-cyan transition-colors">04 · 2024–25</span>
+            <span class="dt-title block mt-1 font-serif text-[1.05rem] leading-tight text-muted group-hover:text-[color:var(--text)] transition-colors">Agentic AI</span>
+          </button>
+          <button type="button" class="dt-step group relative flex-shrink-0 w-[168px] md:w-auto md:flex-1 snap-start text-left outline-none" data-i="4" aria-expanded="false">
+            <span class="dt-dot relative z-10 flex items-center justify-center w-[15px] h-[15px] rounded-full border-2 border-cyan/40 bg-ink mx-auto md:mx-0 transition-all duration-300 group-hover:border-cyan"><span class="dt-core w-[7px] h-[7px] rounded-full bg-cyan scale-0 transition-transform duration-300"></span></span>
+            <span class="block mt-3 font-mono text-[.68rem] tracking-[.1em] uppercase text-cyan/70 group-hover:text-cyan transition-colors">05 · Now</span>
+            <span class="dt-title block mt-1 font-serif text-[1.05rem] leading-tight text-muted group-hover:text-[color:var(--text)] transition-colors">Small models, right-sized</span>
+          </button>
+        </div>
+      </div>
+      <div class="relative mt-8 rounded-[22px] border border-line bg-surface/55 backdrop-blur-md p-7 md:p-9 overflow-hidden min-h-[132px]">
+        <div class="dt-panel" data-i="0">
+          <p class="font-mono text-[.72rem] tracking-[.1em] uppercase text-cyan/80 mb-2">Engineering roots</p>
+          <p class="text-[color:var(--text)] text-[1.05rem] leading-relaxed max-w-[62ch]">B.E. in Computer Engineering from Anna University, Chennai. Design and code have been part of the same toolbox from the start.</p>
+        </div>
+        <div class="dt-panel hidden" data-i="1">
+          <p class="font-mono text-[.72rem] tracking-[.1em] uppercase text-cyan/80 mb-2">Full-stack shipping</p>
+          <p class="text-[color:var(--text)] text-[1.05rem] leading-relaxed max-w-[62ch]">React and Next.js front ends, Node.js and Python back ends, SQL, Docker and Azure. EduPulse is a Next.js 14 platform with four role-based workspaces.</p>
+        </div>
+        <div class="dt-panel hidden" data-i="2">
+          <p class="font-mono text-[.72rem] tracking-[.1em] uppercase text-cyan/80 mb-2">LLMs in real products</p>
+          <p class="text-[color:var(--text)] text-[1.05rem] leading-relaxed max-w-[62ch]">SheetMind AI puts a language model inside Excel. ChatCart Pro adds an AI chatbot and WhatsApp Cloud API ordering for businesses.</p>
+        </div>
+        <div class="dt-panel hidden" data-i="3">
+          <p class="font-mono text-[.72rem] tracking-[.1em] uppercase text-cyan/80 mb-2">Agentic AI</p>
+          <p class="text-[color:var(--text)] text-[1.05rem] leading-relaxed max-w-[62ch]">Voice and chat agents that do work, not just answer: taking orders, syncing stock with a POS and handing off to people. VoicePilot extends this to Tamil, Malayalam and Hindi.</p>
+        </div>
+        <div class="dt-panel hidden" data-i="4">
+          <p class="font-mono text-[.72rem] tracking-[.1em] uppercase text-cyan/80 mb-2">Small models, right-sized</p>
+          <p class="text-[color:var(--text)] text-[1.05rem] leading-relaxed max-w-[62ch]">Choosing an SLM when a smaller, cheaper or more private model is enough, and a larger LLM when the task needs it.</p>
+        </div>
+      </div>
+    </div>
     <div class="wf rv" style="margin-top:56px">
       <div><h4>LLMs</h4><b>Language model apps</b><p>Prompt design, structured outputs, retrieval over your own data, and weighing quality against cost and latency.</p></div>
       <div><h4>Agentic AI</h4><b>Agents and orchestration</b><p>Tool calling, multi-step workflows, memory, guardrails and human-in-the-loop handoff.</p></div>
@@ -647,26 +716,91 @@ nav:not(.solid) .btn::after{display:none}
         <h2>Where I've <em>worked</em></h2>
       </div>
     </div>
-    <div class="rows rv">
-      <div class="row"><div><h3>Würth UAE</h3><span class="role">Senior UI/UX Designer &amp; Product Design Lead</span></div>
-        <ul>
-          <li>Managed end-to-end design processes for major digital initiatives, translating business goals into human-centred products for the GCC market.</li>
-          <li>Optimised B2B/B2C e-commerce ecosystems, achieving an 18% lift in conversion through user research and usability testing.</li>
-          <li>Integrated AI workflows into the creative department, using prompt engineering and VEO3 to accelerate content production.</li>
-          <li>Built and maintained a comprehensive Figma design system, reducing data management errors and enabling cross-platform integration.</li>
-          <li>Collaborated with product managers, developers and stakeholders to align visual solutions with technical requirements and business KPIs.</li>
-        </ul><small>Dubai, UAE<br>July 2020 – Present</small></div>
-      <div class="row"><div><h3>Crystal Media</h3><span class="role">Graphic Designer / UX Designer</span></div>
-        <ul>
-          <li>Created high-fidelity mockups and interactive presentations for client proposals, improving pitch success rates.</li>
-          <li>Designed user-friendly interfaces for employee management and marketing web apps, improving usability metrics.</li>
-          <li>Ran usability testing and folded feedback into UI refinements across WordPress sites.</li>
-        </ul><small>Dubai, UAE<br>Oct 2019 – May 2020</small></div>
-      <div class="row"><div><h3>Cloudhunt Technologies</h3><span class="role">Graphic Web Designer</span></div>
-        <ul>
-          <li>Led website building projects and UX initiatives, focusing on wireframing and interactive prototypes to communicate product vision.</li>
-          <li>Developed technical sheets and design documentation to bridge the gap between creative concepts and final implementation.</li>
-        </ul><small>India<br>May 2018 – Sept 2019</small></div>
+    <div class="rv" data-timeline="work">
+      <div class="relative pl-9 md:pl-12">
+        <div class="absolute left-[7px] md:left-[9px] top-2 bottom-2 w-[2px] bg-white/10 rounded-full overflow-hidden">
+          <div class="wt-fill w-full bg-gradient-to-b from-cyan via-blue to-violet shadow-glow transition-[height] duration-700 ease-out" style="height:0%"></div>
+        </div>
+
+        <article class="wt-item relative mb-4 last:mb-0" data-i="0">
+          <span class="wt-dot absolute left-[-29px] md:left-[-38px] top-[26px] z-10 flex items-center justify-center w-[17px] h-[17px] rounded-full border-2 border-cyan bg-ink shadow-[0_0_14px_rgba(127,233,255,.5)]"><span class="w-[7px] h-[7px] rounded-full bg-cyan"></span></span>
+          <button type="button" class="wt-toggle w-full text-left rounded-[18px] border border-line bg-surface/55 backdrop-blur-md px-6 py-5 md:px-7 md:py-6 transition-colors hover:border-cyan/50" aria-expanded="true">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-serif text-[1.5rem] md:text-[1.7rem] font-medium leading-tight">Würth UAE</h3>
+                <p class="text-muted text-[.92rem] mt-1">Senior UI/UX Designer &amp; Product Design Lead</p>
+              </div>
+              <div class="flex items-center gap-3 flex-shrink-0">
+                <span class="hidden sm:inline font-mono text-[.72rem] text-cyan/70 text-right leading-tight">Dubai, UAE<br>Jul 2020 – Present</span>
+                <svg class="wt-chev w-4 h-4 text-cyan transition-transform duration-300 rotate-180" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </button>
+          <div class="wt-body overflow-hidden transition-[grid-template-rows] duration-400 ease-out grid grid-rows-[1fr]">
+            <div class="overflow-hidden">
+              <ul class="px-6 md:px-7 pt-4 pb-6 space-y-3 text-[color:var(--text)] text-[.95rem] leading-relaxed">
+                <li class="relative pl-5"><span class="absolute left-0 top-[.7em] w-[10px] h-px bg-cyan"></span>Managed end-to-end design processes for major digital initiatives, translating business goals into human-centred products for the GCC market.</li>
+                <li class="relative pl-5"><span class="absolute left-0 top-[.7em] w-[10px] h-px bg-cyan"></span>Optimised B2B/B2C e-commerce ecosystems, achieving an <b class="text-core">18%</b> lift in conversion through user research and usability testing.</li>
+                <li class="relative pl-5"><span class="absolute left-0 top-[.7em] w-[10px] h-px bg-cyan"></span>Integrated AI workflows into the creative department, using prompt engineering and VEO3 to accelerate content production.</li>
+                <li class="relative pl-5"><span class="absolute left-0 top-[.7em] w-[10px] h-px bg-cyan"></span>Built and maintained a comprehensive Figma design system, reducing data management errors and enabling cross-platform integration.</li>
+                <li class="relative pl-5"><span class="absolute left-0 top-[.7em] w-[10px] h-px bg-cyan"></span>Collaborated with product managers, developers and stakeholders to align visual solutions with technical requirements and business KPIs.</li>
+                <li class="sm:hidden font-mono text-[.72rem] text-cyan/70 pt-1">Dubai, UAE · Jul 2020 – Present</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="wt-item relative mb-4 last:mb-0" data-i="1">
+          <span class="wt-dot absolute left-[-29px] md:left-[-38px] top-[26px] z-10 flex items-center justify-center w-[17px] h-[17px] rounded-full border-2 border-cyan/30 bg-ink transition-colors duration-300"><span class="w-[7px] h-[7px] rounded-full bg-cyan/30 transition-colors duration-300"></span></span>
+          <button type="button" class="wt-toggle w-full text-left rounded-[18px] border border-line bg-surface/55 backdrop-blur-md px-6 py-5 md:px-7 md:py-6 transition-colors hover:border-cyan/50" aria-expanded="false">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-serif text-[1.5rem] md:text-[1.7rem] font-medium leading-tight">Crystal Media</h3>
+                <p class="text-muted text-[.92rem] mt-1">Graphic Designer / UX Designer</p>
+              </div>
+              <div class="flex items-center gap-3 flex-shrink-0">
+                <span class="hidden sm:inline font-mono text-[.72rem] text-cyan/70 text-right leading-tight">Dubai, UAE<br>Oct 2019 – May 2020</span>
+                <svg class="wt-chev w-4 h-4 text-cyan transition-transform duration-300" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </button>
+          <div class="wt-body overflow-hidden transition-[grid-template-rows] duration-400 ease-out grid grid-rows-[0fr]">
+            <div class="overflow-hidden">
+              <ul class="px-6 md:px-7 pt-4 pb-6 space-y-3 text-[color:var(--text)] text-[.95rem] leading-relaxed">
+                <li class="relative pl-5"><span class="absolute left-0 top-[.7em] w-[10px] h-px bg-cyan"></span>Created high-fidelity mockups and interactive presentations for client proposals, improving pitch success rates.</li>
+                <li class="relative pl-5"><span class="absolute left-0 top-[.7em] w-[10px] h-px bg-cyan"></span>Designed user-friendly interfaces for employee management and marketing web apps, improving usability metrics.</li>
+                <li class="relative pl-5"><span class="absolute left-0 top-[.7em] w-[10px] h-px bg-cyan"></span>Ran usability testing and folded feedback into UI refinements across WordPress sites.</li>
+                <li class="sm:hidden font-mono text-[.72rem] text-cyan/70 pt-1">Dubai, UAE · Oct 2019 – May 2020</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="wt-item relative mb-0" data-i="2">
+          <span class="wt-dot absolute left-[-29px] md:left-[-38px] top-[26px] z-10 flex items-center justify-center w-[17px] h-[17px] rounded-full border-2 border-cyan/30 bg-ink transition-colors duration-300"><span class="w-[7px] h-[7px] rounded-full bg-cyan/30 transition-colors duration-300"></span></span>
+          <button type="button" class="wt-toggle w-full text-left rounded-[18px] border border-line bg-surface/55 backdrop-blur-md px-6 py-5 md:px-7 md:py-6 transition-colors hover:border-cyan/50" aria-expanded="false">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="font-serif text-[1.5rem] md:text-[1.7rem] font-medium leading-tight">Cloudhunt Technologies</h3>
+                <p class="text-muted text-[.92rem] mt-1">Graphic Web Designer</p>
+              </div>
+              <div class="flex items-center gap-3 flex-shrink-0">
+                <span class="hidden sm:inline font-mono text-[.72rem] text-cyan/70 text-right leading-tight">India<br>May 2018 – Sept 2019</span>
+                <svg class="wt-chev w-4 h-4 text-cyan transition-transform duration-300" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </button>
+          <div class="wt-body overflow-hidden transition-[grid-template-rows] duration-400 ease-out grid grid-rows-[0fr]">
+            <div class="overflow-hidden">
+              <ul class="px-6 md:px-7 pt-4 pb-6 space-y-3 text-[color:var(--text)] text-[.95rem] leading-relaxed">
+                <li class="relative pl-5"><span class="absolute left-0 top-[.7em] w-[10px] h-px bg-cyan"></span>Led website building projects and UX initiatives, focusing on wireframing and interactive prototypes to communicate product vision.</li>
+                <li class="relative pl-5"><span class="absolute left-0 top-[.7em] w-[10px] h-px bg-cyan"></span>Developed technical sheets and design documentation to bridge the gap between creative concepts and final implementation.</li>
+                <li class="sm:hidden font-mono text-[.72rem] text-cyan/70 pt-1">India · May 2018 – Sept 2019</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
     <div class="skills rv">
       <div><h4>Design</h4><ul><li>Product &amp; UX design</li><li>Design systems &amp; DesignOps</li><li>High-fidelity prototyping</li><li>IA, interaction &amp; accessibility</li></ul></div>
@@ -1231,6 +1365,72 @@ function count(el){
     addEventListener('scroll',scroll,{passive:true});
     addEventListener('resize',build);addEventListener('load',build);
     build();setTimeout(build,1500);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(build);
+  })();
+})();
+</script>
+<script>
+// Interactive timelines: dev-journey stepper + work-journey accordion
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- dev journey: click-through stepper ---------- */
+  (function(){
+    const root=document.querySelector('[data-timeline="dev"]');if(!root)return;
+    const steps=[...root.querySelectorAll('.dt-step')],panels=[...root.querySelectorAll('.dt-panel')],fill=root.querySelector('.dt-fill');
+    let active=0,auto=null;
+    function show(i,{user}={}){
+      active=i;
+      steps.forEach((s,k)=>{
+        const on=k===i,past=k<i;
+        s.setAttribute('aria-expanded',on);
+        s.querySelector('.dt-dot').classList.toggle('border-cyan',on||past);
+        s.querySelector('.dt-dot').classList.toggle('border-cyan/40',!(on||past));
+        s.querySelector('.dt-core').style.transform=on||past?'scale(1)':'scale(0)';
+        s.querySelector('.dt-title').classList.toggle('text-[color:var(--text)]',on);
+        s.querySelector('.dt-title').classList.toggle('text-muted',!on);
+      });
+      panels.forEach((p,k)=>p.classList.toggle('hidden',k!==i));
+      if(fill)fill.style.width=(10+i/(steps.length-1)*90)+'%';
+      if(user&&auto){clearInterval(auto);auto=null}
+    }
+    steps.forEach((s,i)=>s.addEventListener('click',()=>show(i,{user:true})));
+    show(0);
+    if(!reduce){ // gentle auto-advance until the user interacts, then stop
+      const io=new IntersectionObserver(es=>{
+        if(es[0].isIntersecting&&!auto){
+          auto=setInterval(()=>show((active+1)%steps.length),3200);
+        }else if(!es[0].isIntersecting&&auto){clearInterval(auto);auto=null}
+      },{threshold:.4});
+      io.observe(root);
+    }
+  })();
+
+  /* ---------- work journey: accordion with progress spine ---------- */
+  (function(){
+    const root=document.querySelector('[data-timeline="work"]');if(!root)return;
+    const items=[...root.querySelectorAll('.wt-item')],fill=root.querySelector('.wt-fill');
+    function setDot(item,on){
+      const dot=item.querySelector('.wt-dot');
+      dot.classList.toggle('border-cyan',on);dot.classList.toggle('border-cyan/30',!on);
+      dot.querySelector('span').classList.toggle('bg-cyan',on);dot.querySelector('span').classList.toggle('bg-cyan/30',!on);
+    }
+    function updateSpine(){
+      const openIdx=items.map((it,k)=>it.querySelector('.wt-toggle').getAttribute('aria-expanded')==='true'?k:-1).filter(k=>k>=0);
+      const last=openIdx.length?Math.max(...openIdx):-1;
+      if(fill)fill.style.height=last<0?'0%':((last+1)/items.length*100)+'%';
+    }
+    items.forEach((item,i)=>{
+      const btn=item.querySelector('.wt-toggle'),body=item.querySelector('.wt-body'),chev=item.querySelector('.wt-chev');
+      btn.addEventListener('click',()=>{
+        const open=btn.getAttribute('aria-expanded')==='true';
+        btn.setAttribute('aria-expanded',String(!open));
+        body.style.gridTemplateRows=open?'0fr':'1fr';
+        chev.style.transform=open?'rotate(0deg)':'rotate(180deg)';
+        setDot(item,!open);
+        updateSpine();
+      });
+    });
+    updateSpine();
   })();
 })();
 </script>
