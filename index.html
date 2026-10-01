@@ -1303,7 +1303,8 @@ function count(el){
     const mids=[0,1,2].map(()=>document.createElement('canvas'));
     let W=1,H=1,dpr=1,vis=true,raf=0,last=performance.now(),B=[],Pl=[],nextB=0,nextP=800,bx=0,by=0,bf=0;
     const M={x:-999,y:-999,on:false},budget=o.budget*(small?.5:1),sc=o.scale||1;
-    const mainY=(x,t)=>(o.yPx||H*o.y)+(Math.sin(x*.004+t*.0004)*H*.03+Math.sin(x*.011-t*.0007)*H*.012)*(o.amp||1);
+    const baseY=()=>typeof o.yPx==='function'?o.yPx(H,W):(o.yPx||H*o.y); // yPx may be a fn(H,W) so it can track real layout (e.g. sit just under a heading) across breakpoints
+    const mainY=(x,t)=>baseY()+(Math.sin(x*.004+t*.0004)*H*.03+Math.sin(x*.011-t*.0007)*H*.012)*(o.amp||1);
     const segCount=()=>B.reduce((s,b)=>s+b.segs,0);
     function size(){
       dpr=Math.min(2,devicePixelRatio||1);const r=host.getBoundingClientRect();W=Math.max(1,r.width);H=Math.max(1,r.height);
@@ -1396,7 +1397,14 @@ function count(el){
     kick();
   }
   Threads(document.getElementById('hero'),{y:.6,budget:80,amp:1,scale:1});
-  Threads(document.querySelector('.contact'),{yPx:392,budget:40,amp:.6,scale:.7,pulseEvery:5500});
+  Threads(document.querySelector('.contact'),{yPx:(H,W)=>{
+    // sit in the gap between the heading and the email link, wherever that actually falls at this breakpoint
+    const sec=document.querySelector('.contact'),h2=sec.querySelector('h2'),email=sec.querySelector('.mailto');
+    if(!h2||!email)return H*.3;
+    const top=sec.getBoundingClientRect().top;
+    const gapStart=h2.getBoundingClientRect().bottom-top,gapEnd=email.getBoundingClientRect().top-top;
+    return gapStart+(gapEnd-gapStart)*.5;
+  },budget:40,amp:.5,scale:.7,pulseEvery:5500});
 
   /* ---------- section dividers ---------- */
   const secs=[...document.querySelectorAll('section')];
