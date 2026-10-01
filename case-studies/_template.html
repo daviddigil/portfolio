@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}} — Case Study | Digil David</title>
+<meta name="description" content="{{DESC}}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Digil David">
+<link rel="canonical" href="https://daviddigil.com/case-studies/{{SLUG}}.html">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://daviddigil.com/case-studies/{{SLUG}}.html">
+<meta property="og:site_name" content="Digil David — Portfolio">
+<meta property="og:title" content="{{TITLE}} — Case Study">
+<meta property="og:description" content="{{DESC}}">
+<meta property="og:image" content="https://sm-cdn.eu/ihrds3zx9kvo2lco.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{TITLE}} — Case Study">
+<meta name="twitter:description" content="{{DESC}}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "{{TITLE}}",
+  "about": "{{DESC}}",
+  "url": "https://daviddigil.com/case-studies/{{SLUG}}.html",
+  "creator": {"@type": "Person", "name": "Digil David", "url": "https://daviddigil.com/"},
+  "isPartOf": {"@type": "WebSite", "url": "https://daviddigil.com/", "name": "Digil David — Portfolio"}
+}
+</script>
+
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#050B14">
+<link rel="stylesheet" href="case.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="../index.html" class="logo">Digil<span>.</span></a>
+    <div class="links">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#design">Design</a>
+      <a href="../index.html#code">Code</a>
+      <a href="../index.html#email">Email</a>
+      <a href="../index.html#practice">Journey</a>
+    </div>
+    <a href="../index.html#contact" class="btn">Start a project</a>
+  </div>
+</nav>
+
+<main>
+<div class="wrap cs-crumb">
+  <a href="../index.html">Home</a><span>/</span><a href="../index.html#{{SECTION}}">{{SECTION_LABEL}}</a><span>/</span><span>{{TITLE}}</span>
+</div>
+
+<header class="cs-head">
+  <div class="wrap rv">
+    <div class="cs-kicker">
+      <span class="status">{{STATUS}}</span>
+      <span>{{CATEGORY}}</span>
+    </div>
+    <h1 class="cs-title">{{TITLE_HTML}}</h1>
+    <p class="cs-dek">{{DEK}}</p>
+    <div class="cs-meta">
+      <div><span>Role</span><b>{{ROLE}}</b></div>
+      <div><span>Timeline</span><b>{{TIMELINE}}</b></div>
+      <div><span>Platform</span><b>{{PLATFORM}}</b></div>
+      <div><span>Client</span><b>{{CLIENT}}</b></div>
+    </div>
+    <div class="cs-links">
+      {{LINKS}}
+    </div>
+    <div class="cs-cover" style="background:linear-gradient(135deg,{{C1}},{{C2}})"><b>{{COVER_TEXT}}</b></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="cs-layout">
+      <div class="cs-body rv">
+
+        <h2>The challenge</h2>
+        {{CHALLENGE}}
+
+        <h2>Approach</h2>
+        {{APPROACH}}
+
+        <h2>What I built</h2>
+        {{SOLUTION}}
+
+        <h2>Outcome</h2>
+        {{OUTCOME_INTRO}}
+        <div class="cs-stats">
+          {{STATS}}
+        </div>
+        {{OUTCOME_EXTRA}}
+
+      </div>
+
+      <aside class="cs-side rv">
+        <div class="cs-box">
+          <h4>Stack &amp; tools</h4>
+          <div class="cs-stack">{{STACK}}</div>
+        </div>
+        <div class="cs-box">
+          <h4>Quick facts</h4>
+          <ul>
+            {{FACTS}}
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+
+    <div class="cs-nav2" role="navigation" aria-label="More case studies">
+      <a href="{{PREV_HREF}}"><span class="lbl">← Previous</span><span class="ttl">{{PREV_TITLE}}</span></a>
+      <a href="{{NEXT_HREF}}" class="next"><span class="lbl">Next →</span><span class="ttl">{{NEXT_TITLE}}</span></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 Digil David</span><span>Dubai · India</span></div>
+</footer>
+
+<script src="case.js"></script>
+</body>
+</html>
