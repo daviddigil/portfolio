@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>People Core HR — Case Study | Digil David</title>
-<meta name="description" content="A working HR platform prototype I designed and built, deployed and fully clickable as a live demo.">
+<title>People Core HR — Enterprise HR Design Case Study | Digil David</title>
+<meta name="description" content="Designing an enterprise HR platform's core workflows, data tables and workforce analytics: role-based access, an employee directory, approvals, and an HR reporting module covering headcount, payroll cost and UAE Emiratisation compliance.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Digil David">
 <link rel="canonical" href="https://daviddigil.com/case-studies/people-core-hr.html">
@@ -12,12 +12,12 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://daviddigil.com/case-studies/people-core-hr.html">
 <meta property="og:site_name" content="Digil David — Portfolio">
-<meta property="og:title" content="People Core HR — Case Study">
-<meta property="og:description" content="A working HR platform prototype I designed and built, deployed and fully clickable as a live demo.">
+<meta property="og:title" content="People Core HR — Enterprise HR Design Case Study">
+<meta property="og:description" content="Designing an enterprise HR platform's core workflows, data tables and workforce analytics, including UAE Emiratisation compliance reporting.">
 <meta property="og:image" content="https://sm-cdn.eu/ihrds3zx9kvo2lco.jpeg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="People Core HR — Case Study">
-<meta name="twitter:description" content="A working HR platform prototype I designed and built, deployed and fully clickable as a live demo.">
+<meta name="twitter:title" content="People Core HR — Enterprise HR Design Case Study">
+<meta name="twitter:description" content="Designing an enterprise HR platform's core workflows, data tables and workforce analytics, including UAE Emiratisation compliance reporting.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@
   "@context": "https://schema.org",
   "@type": "CreativeWork",
   "name": "People Core HR",
-  "about": "A working HR platform prototype I designed and built, deployed and fully clickable as a live demo.",
+  "about": "Designing an enterprise HR platform's core workflows, data tables and workforce analytics, including role-based access, an employee directory and UAE Emiratisation compliance reporting.",
   "url": "https://daviddigil.com/case-studies/people-core-hr.html",
   "creator": {"@type": "Person", "name": "Digil David", "url": "https://daviddigil.com/"},
   "isPartOf": {"@type": "WebSite", "url": "https://daviddigil.com/", "name": "Digil David — Portfolio"}
@@ -57,17 +57,17 @@
 
 <main>
 <div class="wrap cs-crumb">
-  <a href="../index.html">Home</a><span>/</span><a href="../index.html#code">Code</a><span>/</span><span>People Core HR</span>
+  <a href="../index.html">Home</a><span>/</span><a href="../index.html#design">Design</a><span>/</span><span>People Core HR</span>
 </div>
 
 <header class="cs-head">
   <div class="wrap rv">
     <div class="cs-kicker">
-      <span class="status">Live demo</span>
-      <span>HR SaaS</span>
+      <span class="status">Prototype</span>
+      <span>Enterprise HR · Workflows &amp; data</span>
     </div>
     <h1 class="cs-title">People Core <em>HR</em></h1>
-    <p class="cs-dek">A functioning HR platform prototype — not static mockups, but a deployed, clickable application — built to demonstrate core HR workflows end to end.</p>
+    <p class="cs-dek">An enterprise HR platform design covering role-based access, an employee directory, approval workflows and a workforce analytics module — built as a working prototype, not static screens, so the data tables, filters and dashboards actually function.</p>
     <div class="cs-meta">
       <div><span>Role</span><b>Product design + build</b></div>
       <div><span>Timeline</span><b>Demo prototype</b></div>
@@ -87,36 +87,42 @@
       <div class="cs-body rv">
 
         <h2>The challenge</h2>
-        <p>HR software demos are often either static Figma click-throughs that don't survive real interaction, or they're full enterprise platforms that are overkill to spin up just to validate a concept. I wanted something in between: a real, working web app that behaves like the finished product, without the overhead of a production HR system.</p>
+        <p>Enterprise HR tools fail most often not in their visual design but in their information architecture: a platform like this has to serve an employee checking their own leave balance, a manager approving a direct report's timesheet, and an HR admin running headcount and compliance reports — three very different jobs, against the same underlying employee data, inside one product.</p>
+        <p>HR software demos are also usually one of two unconvincing things: static Figma click-throughs that fall apart the moment someone tries to actually use them, or a full production system that's overkill to stand up just to test a concept. I wanted to design and build something in between — real enough that the data tables, filters and role switching actually work, without the overhead of a production HR deployment.</p>
 
         <h2>Approach</h2>
-        <p>I designed and built this as a genuine working prototype rather than a static mockup, which meant making real decisions about data model and state, not just visual layout — core HR workflows (like managing people records and processes) had to actually function, not just look clickable in a design tool.</p>
+        <p>I started from the three roles rather than a screen list: what does an Employee need to see and do, what does a Manager need on top of that, and what does an Admin need on top of both. That ordering is what produced the module set — Attendance, Leave, Payslips and Timesheets sit at the Employee layer; Approvals and Team Attendance sit at the Manager layer; Recruiting, Compliance, Audit Logs, Company Settings and workforce Reports sit at the Admin layer. Org Chart, Directory and Benefits span all three with permission-scoped views.</p>
+        <p>The employee directory and the reporting module were the two places I spent the most design time, because they're where "does this actually work as a data product" gets tested. The directory needed real search and department filtering over a live list, not a static table image. The reports module needed to answer a question an HR lead actually asks — not just "how many employees" but headcount by department, average utilisation, payroll cost, retention over time, workforce diversity and, specific to a UAE operating context, Emiratisation compliance: the percentage of Emirati nationals on headcount, which UAE employers are required to track and report against.</p>
+        <p><b>A decision I'd call out specifically:</b> I considered building Reports as a set of static summary cards — total headcount, total cost, a few percentages — which would have been faster to design and build. I rejected that in favour of chart-based views (department utilisation, headcount by department, a retention trend over time) because the real use case for this module is comparison and trend-spotting, which numbers alone don't support. A single "87% utilisation" card tells you nothing about which department is over- or under-utilised; a bar chart across eight departments does.</p>
 
         <h2>What I built</h2>
-        <p>A deployed, interactive HR platform prototype covering core HR workflows.</p><ul>
-          <li>Real application behaviour, not a static click-through prototype</li>
-          <li>Deployed on Vercel for instant access — no setup required to evaluate it</li>
-          <li>Built end-to-end by one person: design, front end and deployment</li>
+        <p>A role-based enterprise HR platform with 25+ modules behind three permission levels, built as a working application rather than a click-through.</p><ul>
+          <li><b>Role-based access</b>: Employee, Manager and Admin each land on a different module set and a different dashboard, switchable from a quick-access demo login</li>
+          <li><b>Employee directory</b>: a live, searchable table of 16 employees across 6 departments, filterable by department, each record showing status, role and department at a glance</li>
+          <li><b>Org chart</b>: department-level headcount rollup (Engineering, Marketing, Finance, Operations, HR, Sales, Legal, IT Support) as the entry point into the reporting hierarchy</li>
+          <li><b>Workforce analytics</b>: a Reports module with headcount, average utilisation, monthly payroll cost, department utilisation, employee retention over time, workforce diversity and UAE Emiratisation compliance tracking</li>
+          <li><b>Operational workflows</b>: leave, loan and expense approvals, and onboarding tasks surfaced directly on the Admin dashboard as an action queue, not buried in a separate module</li>
+          <li>Also built out: Payslips, Timesheets, Performance, Onboarding/Offboarding, Recruiting, Benefits, Audit Logs, Projects, Compliance, Company Settings, Announcements, Knowledge Base, Learning and an AI Assistant entry point</li>
         </ul>
 
-        <h2>Outcome</h2>
-        <p>The result is a live, testable artifact rather than a slide deck — the kind of thing you can hand to a stakeholder with a link instead of a meeting.</p>
+        <h2>Where this stands</h2>
+        <p>This is a demo prototype seeded with sample data (16–160 employees depending on the view, generated rather than a real company's records), not a production deployment — and I want to be precise about that rather than let "role-based," "data tables" and "analytics" imply more than is actually there. The chart components in Reports are built and wired to the data model; at the time of writing some of the trend charts render with their axes but no plotted series in this demo build, which is a data-seeding gap on my end, not a design decision — worth knowing if you open the live demo and check Reports yourself.</p>
         <div class="cs-stats">
-          <div><b>Live</b><span>deployed demo</span></div><div><b>1</b><span>person, full build</span></div><div><b>Vercel</b><span>hosting</span></div>
+          <div><b>25+</b><span>modules across 3 permission levels</span></div><div><b>16</b><span>employees in the live directory, 6 departments</span></div><div><b>8</b><span>department breakdown in Reports &amp; Org Chart</span></div>
         </div>
-        <p>Building a working prototype rather than a static one is slower up front, but it's a far more convincing way to validate an HR product concept with real users or stakeholders.</p>
+        <p>What this demonstrates is the information architecture and interaction design for enterprise HR data — role-scoped views, a real filterable directory, and a workforce reporting module built around the metrics an HR lead actually tracks, including a UAE-specific compliance figure most portfolio HR demos wouldn't think to include.</p>
 
       </div>
 
       <aside class="cs-side rv">
         <div class="cs-box">
           <h4>Stack &amp; tools</h4>
-          <div class="cs-stack"><span>React</span><span>Vercel</span><span>Web App Design</span></div>
+          <div class="cs-stack"><span>React</span><span>Vercel</span><span>Information Architecture</span><span>Data Table Design</span><span>Dashboard Design</span></div>
         </div>
         <div class="cs-box">
           <h4>Quick facts</h4>
           <ul>
-            <li><span>Type</span><span>Working demo prototype</span></li><li><span>Hosting</span><span>Vercel</span></li><li><span>Build</span><span>Solo, design + code</span></li>
+            <li><span>Type</span><span>Working demo prototype</span></li><li><span>Roles</span><span>Employee, Manager, Admin</span></li><li><span>Modules</span><span>25+</span></li><li><span>Hosting</span><span>Vercel</span></li><li><span>Build</span><span>Solo, design + code</span></li>
           </ul>
         </div>
       </aside>

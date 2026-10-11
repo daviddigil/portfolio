@@ -215,6 +215,12 @@ html.gs .card:hover{transform:none}
 .card:hover .arrow{transform:rotate(45deg);background:#fff;color:#000}
 .body{padding:24px;display:flex;flex-direction:column;gap:10px;flex:1}
 .tag{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.status-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2px}
+.status-pill{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border-radius:999px;border:1px solid var(--line);color:var(--mute)}
+.status-pill.is-live{color:var(--core);border-color:rgba(127,233,255,.5);box-shadow:0 0 12px rgba(127,233,255,.15)}
+.status-pill.is-shipped{color:#8affc1;border-color:rgba(138,255,193,.4)}
+.status-pill.is-prototype{color:var(--accent2);border-color:rgba(155,107,255,.4)}
+.status-pill.is-concept{color:var(--mute);border-color:var(--line)}
 .card h3{font-family:var(--serif);font-size:1.55rem;font-weight:500;line-height:1.15}
 .card p{color:var(--mute);font-size:.93rem}
 .pills{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:10px}
@@ -437,10 +443,10 @@ nav:not(.solid) .btn::after{display:none}
       <p>I'm <strong>Digil David</strong>, a Senior UI/UX Designer and Product Design Lead at <strong>Würth UAE</strong>, where I've led digital product design for the GCC market since 2020. I started in graphic and web design and now turn business goals into human-centred products, from research to design systems to developer handoff.</p>
       <p>I pair that with hands-on <strong>AI workflows</strong> (image prompting, Kling, VEO3, Runway, Higgsfield) and I build and ship my own products, from WhatsApp commerce to voice agents and SaaS tools. I'm happiest when a Figma file turns into something shipping.</p>
       <div class="stats" style="margin-top:34px">
-        <div class="stat"><b data-n="18" data-s="%">0</b><span>conversion lift from the B2B/B2C checkout redesign</span></div>
-        <div class="stat"><b data-n="40" data-s="%">0</b><span>lower external creative video costs with AI workflows</span></div>
-        <div class="stat"><b data-n="30" data-s="%">0</b><span>better dev handoff efficiency with a Figma design system</span></div>
-        <div class="stat"><b data-n="12" data-s="%">0</b><span>customer engagement boost from email and push loops</span></div>
+        <div class="stat"><b data-n="18" data-s="%">18%</b><span>conversion lift from the B2B/B2C checkout redesign</span></div>
+        <div class="stat"><b data-n="40" data-s="%">40%</b><span>lower external creative video costs with AI workflows</span></div>
+        <div class="stat"><b data-n="30" data-s="%">30%</b><span>better dev handoff efficiency with a Figma design system</span></div>
+        <div class="stat"><b data-n="12" data-s="%">12%</b><span>customer engagement boost from email and push loops</span></div>
       </div>
     </div>
   </div>
@@ -462,7 +468,8 @@ nav:not(.solid) .btn::after{display:none}
       <div class="card rv" style="--c:#e2001a">
         <div class="cover" style="--c1:#e2001a;--c2:#e2001a"><b>Würth<br>Online Shop</b></div>
         <div class="body">
-          <span class="tag">E-commerce · Live</span>
+          <div class="status-row"><span class="status-pill is-live">Live</span></div>
+          <span class="tag">E-commerce</span>
           <h3>Würth UAE eShop</h3>
           <p>B2B e-commerce experience I lead at Würth UAE, from research and design system to developer handoff.</p>
           
@@ -477,7 +484,8 @@ nav:not(.solid) .btn::after{display:none}
       <div class="card rv" style="--c:#0f766e">
         <div class="cover" style="--c1:#0f766e;--c2:#2dd4bf"><b>Nextipz</b></div>
         <div class="body">
-          <span class="tag">Fintech · Hospitality · Prototype</span>
+          <div class="status-row"><span class="status-pill is-prototype">Prototype</span></div>
+          <span class="tag">Fintech · Hospitality</span>
           <h3>Nextipz</h3>
           <p>QR-code tipping for restaurant, café and hotel staff in the UAE. Scan, tip, done, with payouts through local gateways.</p>
           
@@ -492,7 +500,8 @@ nav:not(.solid) .btn::after{display:none}
       <div class="card rv" style="--c:#312e81">
         <div class="cover" style="--c1:#312e81;--c2:#818cf8"><b>NexNowGo</b></div>
         <div class="body">
-          <span class="tag">Product design · Figma</span>
+          <div class="status-row"><span class="status-pill is-prototype">Prototype</span></div>
+          <span class="tag">Product design</span>
           <h3>NexNowGo</h3>
           <p>Full product design file covering flows, screens and UI system.</p>
           
@@ -507,7 +516,8 @@ nav:not(.solid) .btn::after{display:none}
       <div class="card rv" style="--c:#075985">
         <div class="cover" style="--c1:#075985;--c2:#38bdf8"><b>Nursing<br>Job Pro</b></div>
         <div class="body">
-          <span class="tag">Jobs marketplace · Figma</span>
+          <div class="status-row"><span class="status-pill is-prototype">Prototype</span></div>
+          <span class="tag">Jobs marketplace</span>
           <h3>Nursing Job Pro</h3>
           <p>A job-search experience built around healthcare professionals.</p>
           
@@ -522,7 +532,8 @@ nav:not(.solid) .btn::after{display:none}
       <div class="card rv" style="--c:#b45309">
         <div class="cover" style="--c1:#b45309;--c2:#fbbf24"><b>Tamil<br>Calendar 2026</b></div>
         <div class="body">
-          <span class="tag">Mobile app · Figma</span>
+          <div class="status-row"><span class="status-pill is-prototype">Prototype</span></div>
+          <span class="tag">Mobile app</span>
           <h3>Tamil Calendar 2026</h3>
           <p>A calendar app designed for Tamil-speaking users, with festivals, dates and daily details.</p>
           
@@ -537,7 +548,8 @@ nav:not(.solid) .btn::after{display:none}
       <div class="card rv" style="--c:#581c87">
         <div class="cover" style="--c1:#581c87;--c2:#c084fc"><b>Boodoo</b></div>
         <div class="body">
-          <span class="tag">Astrology · Community · Figma</span>
+          <div class="status-row"><span class="status-pill is-prototype">Prototype</span></div>
+          <span class="tag">Astrology · Community</span>
           <h3>Boodoo</h3>
           <p>Astrology and horoscope app with a community layer.</p>
           
@@ -568,7 +580,8 @@ nav:not(.solid) .btn::after{display:none}
       <div class="card big rv" style="--c:#064e3b">
         <div class="cover" style="--c1:#064e3b;--c2:#25d366"><b>ChatCart<br>Pro</b></div>
         <div class="body">
-          <span class="tag">AI commerce · UAE &amp; India · Live</span>
+          <div class="status-row"><span class="status-pill is-live">Live</span></div>
+          <span class="tag">AI commerce · UAE &amp; India</span>
           <h3>ChatCart Pro</h3>
           <p>WhatsApp-native ordering for restaurants and grocery stores. Customers order in chat, stock syncs with the POS, and an AI voice agent takes calls. Live with a pilot supermarket in Tamil Nadu.</p>
           <div class="subs">
@@ -587,10 +600,11 @@ nav:not(.solid) .btn::after{display:none}
       <div class="card rv" style="--c:#1e3a8a">
         <div class="cover" style="--c1:#1e3a8a;--c2:#60a5fa"><b>People<br>Core HR</b></div>
         <div class="body">
-          <span class="tag">HR SaaS · Live demo</span>
+          <div class="status-row"><span class="status-pill is-prototype">Prototype</span></div>
+          <span class="tag">Enterprise HR · Workflows &amp; data</span>
           <h3>People Core HR</h3>
-          <p>Working HR platform prototype, deployed and clickable.</p>
-          
+          <p>Role-based enterprise HR platform: a searchable employee directory, approval workflows and a workforce analytics module with UAE Emiratisation compliance tracking.</p>
+
           <div class="pills"><span>Web app</span><span>Vercel</span></div>
           <div class="cta-row">
             <a class="btn ghost small" href="https://peoplecorehr-demoprototype.vercel.app/" target="_blank" rel="noopener">View live demo ↗</a>
@@ -602,6 +616,7 @@ nav:not(.solid) .btn::after{display:none}
       <div class="card rv" style="--c:#831843">
         <div class="cover" style="--c1:#831843;--c2:#f472b6"><b>EduPulse</b></div>
         <div class="body">
+          <div class="status-row"><span class="status-pill is-concept">In development</span></div>
           <span class="tag">EdTech SaaS</span>
           <h3>EduPulse</h3>
           <p>School management platform with four role-based workspaces for admins, teachers, parents and students.</p>
@@ -616,7 +631,8 @@ nav:not(.solid) .btn::after{display:none}
       <div class="card rv" style="--c:#14532d">
         <div class="cover" style="--c1:#14532d;--c2:#4ade80"><b>SheetMind<br>AI</b></div>
         <div class="body">
-          <span class="tag">Productivity · AI · Sold on Gumroad</span>
+          <div class="status-row"><span class="status-pill is-shipped">Shipped · Sold on Gumroad</span></div>
+          <span class="tag">Productivity · AI</span>
           <h3>SheetMind AI</h3>
           <p>An Excel add-in that lets people ask a language model about their spreadsheets, formulas and data.</p>
           
@@ -630,7 +646,8 @@ nav:not(.solid) .btn::after{display:none}
       <div class="card rv" style="--c:#7c2d12">
         <div class="cover" style="--c1:#7c2d12;--c2:#fb923c"><b>VoicePilot</b></div>
         <div class="body">
-          <span class="tag">Voice AI · Product spec · Concept</span>
+          <div class="status-row"><span class="status-pill is-concept">Concept</span></div>
+          <span class="tag">Voice AI · Product spec</span>
           <h3>VoicePilot</h3>
           <p>An AI voice agent platform for businesses that speak Tamil, Malayalam and Hindi.</p>
           
@@ -644,7 +661,8 @@ nav:not(.solid) .btn::after{display:none}
       <div class="card rv" style="--c:#422006">
         <div class="cover" style="--c1:#422006;--c2:#eab308"><b>Shift<br>Breaker</b></div>
         <div class="body">
-          <span class="tag">App · Open source · GitHub</span>
+          <div class="status-row"><span class="status-pill is-shipped">Shipped · Open source</span></div>
+          <span class="tag">App · GitHub</span>
           <h3>Shift Breaker</h3>
           <p>An app built and published on GitHub. Browse the source and read the README for details.</p>
           
@@ -1095,7 +1113,10 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.12});
 document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*80+'ms';io.observe(el)});
 function count(el){
+  // markup already holds the real final value (e.g. "18%") so it's correct even if JS never runs;
+  // only once we're actually animating do we drop to 0 and count up.
   const n=parseFloat(el.dataset.n),s=el.dataset.s,dec=String(n).includes('.')?1:0,t0=performance.now();
+  el.textContent='0'+s;
   (function f(t){const p=Math.min((t-t0)/1200,1),v=n*(1-Math.pow(1-p,3));el.textContent=v.toFixed(dec)+(p<1?'':s);if(p<1)requestAnimationFrame(f)})(t0);
 }
 </script>
