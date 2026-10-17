@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 460" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="row" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7FE9FF" stop-opacity=".35"/>
+      <stop offset="100%" stop-color="#7FE9FF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="460" rx="20" fill="#0A1422"/>
+  <rect x="0.5" y="0.5" width="1199" height="459" rx="19.5" fill="none" stroke="rgba(127,233,255,.18)"/>
+
+  <!-- stage headers -->
+  <g font-size="13" font-weight="600" fill="#E8F1FA" letter-spacing=".02em">
+    <text x="50" y="42">Browse</text>
+    <text x="260" y="42">Add to cart</text>
+    <text x="470" y="42">Cart review</text>
+    <text x="680" y="42">Payment method</text>
+    <text x="900" y="42">Confirm &amp; pay</text>
+  </g>
+  <!-- stage column separators -->
+  <g stroke="rgba(127,233,255,.12)" stroke-width="1">
+    <line x1="200" y1="60" x2="200" y2="430"/>
+    <line x1="410" y1="60" x2="410" y2="430"/>
+    <line x1="620" y1="60" x2="620" y2="430"/>
+    <line x1="850" y1="60" x2="850" y2="430"/>
+  </g>
+
+  <!-- row: B2B -->
+  <text x="20" y="92" font-size="11" fill="#8FA3B8" letter-spacing=".08em">B2B BUYER</text>
+  <rect x="20" y="100" width="1160" height="2" fill="url(#row)"/>
+  <g font-size="12" fill="#8FA3B8">
+    <text x="50" y="125">Checks stock across</text>
+    <text x="50" y="140">multiple SKUs</text>
+    <text x="260" y="125">Bulk quantities,</text>
+    <text x="260" y="140">mixed order sizes</text>
+    <text x="470" y="125" fill="#FF5FD2">Order summary unclear</text>
+    <text x="470" y="140" fill="#FF5FD2">at account pricing</text>
+    <text x="680" y="125" fill="#FF5FD2">No visible path for</text>
+    <text x="680" y="140" fill="#FF5FD2">quote / bulk terms</text>
+    <text x="900" y="125">Completes with</text>
+    <text x="900" y="140">account billing</text>
+  </g>
+
+  <!-- row: B2C -->
+  <text x="20" y="205" font-size="11" fill="#8FA3B8" letter-spacing=".08em">B2C BUYER</text>
+  <rect x="20" y="213" width="1160" height="2" fill="url(#row)"/>
+  <g font-size="12" fill="#8FA3B8">
+    <text x="50" y="238">Browses a few</text>
+    <text x="50" y="253">specific items</text>
+    <text x="260" y="238">Single or small</text>
+    <text x="260" y="253">quantity add</text>
+    <text x="470" y="238" fill="#FF5FD2">Drop-off: summary</text>
+    <text x="470" y="253" fill="#FF5FD2">reads B2B-first</text>
+    <text x="680" y="238" fill="#FF5FD2">Payment options lack</text>
+    <text x="680" y="253" fill="#FF5FD2">trust signals</text>
+    <text x="900" y="238">Completes retail</text>
+    <text x="900" y="253">checkout</text>
+  </g>
+
+  <!-- pain marker band -->
+  <rect x="410" y="300" width="440" height="110" rx="12" fill="rgba(255,95,210,.07)" stroke="rgba(255,95,210,.35)" stroke-dasharray="4 4"/>
+  <text x="430" y="325" font-size="12" font-weight="600" fill="#FF5FD2">Where usability sessions showed drop-off</text>
+  <text x="430" y="347" font-size="12" fill="#C9D4DF">Cart review and payment method selection — the two stages</text>
+  <text x="430" y="365" font-size="12" fill="#C9D4DF">every tested session stalled at, for both buyer segments.</text>
+  <text x="430" y="390" font-size="12" fill="#7FE9FF">Fix: segment-aware summary + clearer trust signals at payment.</text>
+
+  <text x="50" y="440" font-size="11" fill="#8FA3B8">Recreated from the original mapping exercise — not an exported file from the project.</text>
+</svg>

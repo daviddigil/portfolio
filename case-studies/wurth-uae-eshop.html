@@ -46,9 +46,8 @@
     <a href="../index.html" class="logo">Digil<span>.</span></a>
     <div class="links">
       <a href="../index.html#about">About</a>
-      <a href="../index.html#design">Design</a>
-      <a href="../index.html#code">Code</a>
-      <a href="../index.html#email">Email</a>
+      <a href="../index.html#featured">Work</a>
+      <a href="../index.html#also">Also</a>
       <a href="../index.html#practice">Journey</a>
     </div>
     <a href="../index.html#contact" class="btn">Start a project</a>
@@ -57,7 +56,7 @@
 
 <main>
 <div class="wrap cs-crumb">
-  <a href="../index.html">Home</a><span>/</span><a href="../index.html#design">Design</a><span>/</span><span>Würth UAE eShop</span>
+  <a href="../index.html">Home</a><span>/</span><a href="../index.html#featured">Featured work</a><span>/</span><span>Würth UAE eShop</span>
 </div>
 
 <header class="cs-head">
@@ -70,7 +69,7 @@
     <p class="cs-dek">A fastener and tooling wholesaler's online shop, redesigned around how trade buyers actually reorder: fast, repeatable, and trustworthy enough to move real procurement budgets online.</p>
     <div class="cs-meta">
       <div><span>Role</span><b>Senior UI/UX Designer &amp; Product Design Lead</b></div>
-      <div><span>Timeline</span><b>Jul 2020 – Present</b></div>
+      <div><span>Timeline</span><b>Jul 2020 – Oct 2026</b></div>
       <div><span>Platform</span><b>Web · Responsive</b></div>
       <div><span>Client</span><b>Würth UAE</b></div>
     </div>
@@ -90,9 +89,18 @@
         <p>Würth UAE sells tools, fasteners and industrial supplies to both trade professionals and individual buyers across the GCC. The existing checkout flow was built for a single buyer type and leaked conversions at exactly the moment it mattered most: between adding items to cart and completing payment.</p>
         <p>B2B buyers needed bulk reorder, quote requests and account-level pricing; B2C buyers needed something closer to a standard retail checkout. Serving both through one undifferentiated flow meant neither got what they needed, and usability testing showed drop-off was concentrated around cart review and payment method selection.</p>
 
+        <h2>Research</h2>
+        <p>I ran usability testing across both buyer segments to find where the flow actually broke down, rather than guessing from analytics alone — watching trade and retail buyers attempt a real checkout, not just reviewing drop-off numbers after the fact. That surfaced two specific friction points, consistent across sessions: unclear order summaries at cart review, and a lack of trust signals and clarity at payment method selection. B2B buyers in particular stalled when the flow didn't visibly account for account-level pricing or a bulk/quote path.</p>
+        <p><b>How I'm measuring the 18%:</b> conversion was tracked as completed-checkout rate against site traffic, comparing the period before the redesign shipped to the period after, on the same eShop analytics the business already used day to day. I'm not presenting this as a formal controlled A/B test — it's a before/after comparison on live production traffic, which is the honest framing, not a lab-controlled study with a fixed sample size I can quote precisely.</p>
+
+        <figure class="cs-figure">
+          <img src="img/wurth-journey-map.svg" alt="Simplified journey map: B2B and B2C checkout stages from browse through confirm and pay, with the drop-off points at cart review and payment method selection marked." loading="lazy">
+          <figcaption>A simplified recreation of the B2B/B2C journey map from this research — the real mapping exercise covered more detail (channel notes, emotional highs/lows per stage) than fits one diagram here; this isolates the two stages the redesign was built to fix.</figcaption>
+        </figure>
+
         <h2>Approach</h2>
-        <p>I ran user research and usability testing across both buyer segments to find where the flow actually broke down, rather than guessing from analytics alone. That surfaced friction points in step count, unclear order summaries, and a lack of trust signals at the payment step.</p>
-        <p>From there I mapped the end-to-end journey for both B2B and B2C paths, then designed a shared checkout shell with segment-aware steps, so the two audiences diverge only where their needs actually differ, keeping the system maintainable rather than forked into two separate codebases.</p>
+        <p>I mapped the end-to-end journey for both B2B and B2C paths, then designed a shared checkout shell with segment-aware steps, so the two audiences diverge only where their needs actually differ, keeping the system maintainable rather than forked into two separate codebases.</p>
+        <p><b>A decision I'd call out specifically:</b> I considered building fully separate checkout flows for B2B and B2C — simpler to design for each segment in isolation, and arguably faster to ship first. I rejected that because Würth's catalogue and pricing logic are shared across both buyer types, and a forked checkout would have meant every future pricing or catalogue change needing to be built and QA'd twice. The shared-shell approach took longer to get right at the start, but it's the reason the design system still holds up as the single source of truth years later instead of two diverging ones.</p>
 
         <h2>What I built</h2>
         <p>A redesigned checkout flow with clearer order review, simplified payment selection and fewer required steps, built on a comprehensive Figma design system I built and maintained for cross-platform consistency.</p>
@@ -103,11 +111,15 @@
         </ul>
 
         <h2>Outcome</h2>
-        <p>The redesign shipped with measurable results on both the conversion and the engineering side.</p>
+        <p>The redesign shipped with measurable results on both the conversion and the engineering side, measured the way described above: before/after on live checkout traffic, not a lab study.</p>
         <div class="cs-stats">
-          <div><b>18%</b><span>lift in conversion rate</span></div><div><b>30%</b><span>better dev handoff efficiency</span></div><div><b>B2B/B2C</b><span>unified checkout system</span></div>
+          <div><b>18%</b><span>lift in checkout conversion</span></div><div><b>30%</b><span>better dev handoff efficiency</span></div><div><b>B2B/B2C</b><span>unified checkout system</span></div>
         </div>
         <p>Because the design system is still the one in active use at Würth UAE, this isn't a one-off redesign — it's the foundation new features get built on, which is where the real compounding value of the 30% handoff improvement shows up over time.</p>
+        <p>The same role also covered the company's external newsletters, designed and shipped in both dark and light mode: a <b>22% open rate</b> and <b>1.2% click rate</b> across those campaigns, plus automated lifecycle email and push journeys that lifted engagement by a further 12%.</p>
+
+        <h2>What I'd change</h2>
+        <p>If I were starting this redesign again, I'd push harder, earlier, to get a true controlled A/B test running on the checkout rather than relying on before/after comparison — it's a real limitation of how the 18% figure is measured, and it's the first thing I'd fix about my own process here, not just the product. I'd also want to formally re-test the B2B quote/bulk path with trade buyers specifically, since most of the usability sessions I ran skewed toward the faster-moving B2C flow and I have less direct observation of the slower, higher-stakes B2B path than I'd like.</p>
 
       </div>
 

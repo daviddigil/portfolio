@@ -46,9 +46,8 @@
     <a href="../index.html" class="logo">Digil<span>.</span></a>
     <div class="links">
       <a href="../index.html#about">About</a>
-      <a href="../index.html#design">Design</a>
-      <a href="../index.html#code">Code</a>
-      <a href="../index.html#email">Email</a>
+      <a href="../index.html#featured">Work</a>
+      <a href="../index.html#also">Also</a>
       <a href="../index.html#practice">Journey</a>
     </div>
     <a href="../index.html#contact" class="btn">Start a project</a>
@@ -57,7 +56,7 @@
 
 <main>
 <div class="wrap cs-crumb">
-  <a href="../index.html">Home</a><span>/</span><a href="../index.html#code">Code</a><span>/</span><span>ChatCart Pro</span>
+  <a href="../index.html">Home</a><span>/</span><a href="../index.html#featured">Featured work</a><span>/</span><span>ChatCart Pro</span>
 </div>
 
 <header class="cs-head">
@@ -90,28 +89,63 @@
       <div class="cs-body rv">
 
         <h2>The challenge</h2>
-        <p>Restaurants and grocery stores lose orders every time a phone line is busy, a customer doesn't want to install another app, or a message on social media never gets a reply. These businesses also typically run on a POS system with its own stock numbers, disconnected from any new ordering channel.</p>
-        <p>I wanted to build something that didn't ask small business owners to change how their customers already behave — people already message businesses on WhatsApp — while still solving the real operational problem of stock going out of sync between channels.</p>
+        <p>Restaurants and grocery stores lose orders every time a phone line is busy, a customer doesn't want to install another app, or a message sent to the business never gets a reply. Underneath that, most of these businesses run on nothing more structured than a printed menu, a notebook, and whoever's free to pick up the phone — stock and availability live in someone's head, not in a system.</p>
+        <p>I wanted to build something that didn't ask small business owners to change how their customers already behave — people already message businesses on WhatsApp — while still solving the real operational problems: keeping the AI honestly grounded in what the business actually sells, handling the messy edge cases a real order always has (half portions, "no onions," closed-but-still-taking-preorders), and getting a confirmed order onto a kitchen ticket without a staff member re-typing it.</p>
 
-        <h2>Approach</h2>
-        <p>I designed and built ChatCart Pro around WhatsApp as the primary ordering surface, since it requires zero download and zero behaviour change from the customer. On the business side, the core engineering problem was keeping cart, stock and POS numbers consistent in real time, so an order placed in chat doesn't oversell inventory that was just sold in-store.</p>
-        <p>I added an AI voice calling agent on top of the chat flow for customers who'd rather call — covering the case where WhatsApp isn't the right channel, like an older customer or a quick phone order — and an AI chatbot for businesses that want a similar experience embedded on their own website, not just WhatsApp.</p>
+        <h2>Research &amp; who I built this for</h2>
+        <p>ChatCart Pro grew out of two real deployments, not a generic spec: a grocery store in Tamil Nadu, India, and <b>Fine Dine Family Restaurant</b>, a UAE restaurant whose full menu — roughly 335 dishes across 31 categories — I had transcribed from their actual printed menu into the ordering system. Building against a real restaurant's real menu, not a demo dataset, is where most of the genuinely hard edge cases came from: dishes sold in Half or Full portions that need disambiguating, drinks that take a sweetness preference and plain infusions that don't, and the gap between what a kitchen can promise and what an AI agent is tempted to promise on its behalf.</p>
+        <p>The clearest finding from working directly with that menu: a blanket rule like "ask every hot beverage how sweet they want it" breaks the moment the category isn't uniform. Würth-style component systems taught me to look for that kind of false consistency — "Hot Beverages" on this menu mixes milk teas (Karak, which genuinely needs a sweetness and brew-strength question) with plain infusions like Green Tea and Sulaimani, which don't take milk and shouldn't be asked about brew strength at all. Applying one rule to the whole category produced a nonsensical question on green tea orders.</p>
+
+        <figure class="cs-figure">
+          <img src="img/chatcart-kitchen-queue.png" alt="ChatCart Pro POS kitchen order queue showing a counter order, a WhatsApp order and an AI voice order all landing in one queue with live status: Preparing, Ready, and Confirmed/assigned to delivery agent." loading="lazy">
+          <figcaption>The kitchen order queue from the ChatCart Pro POS product page — counter, WhatsApp and AI-voice orders land in one queue instead of three disconnected systems.</figcaption>
+        </figure>
+
+        <h2>Conversation design</h2>
+        <p>Below is a real flow from the ChatCart Pro marketing site's live demo, reproduced here as a worked example of the conversation design, not a screenshot (the product page shows it as an interactive WhatsApp mockup):</p>
+        <div class="cs-convo">
+          <div class="msg user"><span class="who">Customer</span>Hi! I'd like to order 2kg rice, milk, and eggs 🛒</div>
+          <div class="msg bot"><span class="who">AI employee</span>Got it! Adding 2kg Basmati Rice, 1L Milk, and 1 dozen Eggs to your cart.<br><i>[View cart] [Pay now]</i></div>
+          <div class="msg user"><span class="who">Customer</span>Can I get it delivered by 6pm today?</div>
+          <div class="msg bot"><span class="who">AI employee</span>Yes! Delivery slot 5:00–6:00 PM confirmed. Your order total is $12.90.</div>
+        </div>
+        <p>On the restaurant build specifically, the conversation logic (in a module I call <code>ordering_knowledge.py</code> rather than a generic prompt dump) carries clarifying-question guidance per item or category — so a Shawarma order gets asked "spicy or normal," a Charcoal Special gets a short list of the 2–3 relevant varieties pulled from the live menu, and a plain Green Tea gets asked about sugar only, never brew strength. It's deliberately a small, explicit, human-editable rule set rather than a vector-search/RAG layer: with roughly 30 menu categories and a fixed rule set, RAG would have been solving a retrieval problem the menu doesn't actually have, at the cost of being much harder to debug and edit by hand when the restaurant changes something. The rules only ever tell the AI <i>what to ask</i> — menu items, prices and availability still only ever come from the real catalogue data, which is what stops the AI from inventing a dish or a price that doesn't exist.</p>
+
+        <h2>Edge cases</h2>
+        <p>The parts of an ordering agent that actually take the engineering time aren't the happy path — they're these:</p>
+        <ul>
+          <li><b>Out of stock mid-order:</b> every dish carries a live in-stock flag editable from the admin Menu page (with search and a per-item on/off switch); the moment a staff member flips an item off, the AI stops offering it as available in the very next reply, with no deploy or restart needed.</li>
+          <li><b>A misheard or ambiguous voice order:</b> the voice path runs through Groq Whisper for transcription, then the same grounded ordering logic as text — so a misheard item name still has to match something in the real catalogue to be added; it can't silently invent a dish that sounds similar.</li>
+          <li><b>Tamil and English, mixed:</b> the ChatCart Pro platform auto-detects the customer's language and replies in it, built to handle 30+ languages rather than assuming English; on the restaurant deployment specifically, the base menu and conversation are English/Arabic-oriented, with language auto-detection as the layer that extends this further, so I'd flag that as the honest boundary of what I've verified working end-to-end versus what the wider platform is built to support.</li>
+          <li><b>When the AI hands off to a person:</b> "smooth human handoff" routes complex requests to the business's team instantly with full chat context attached, rather than leaving the customer stuck with a bot that's out of its depth.</li>
+          <li><b>The business is closed:</b> rather than refusing the order, the restaurant agent takes it as a pre-order through the normal flow (items → delivery/pickup → address → confirm) and tells the customer once, plainly, when it'll actually be prepared.</li>
+          <li><b>Guarding against the AI lying about order status:</b> I added an explicit filter that catches the AI claiming an order is confirmed in free text, and replaces it with the one phrasing that's actually true — itemised total, "reply CONFIRM to place it" — because a fluent LLM will sometimes produce a confident-sounding false positive, and an ordering agent cannot be allowed to tell a customer their order is placed when it isn't.</li>
+        </ul>
+
+        <h2>The detail I'm proudest of: no staff touches a confirmed order</h2>
+        <p>Once a customer replies <b>CONFIRM</b> — the only way an order is actually placed, never automatically, regardless of whether it started as text, a voice note, or a photo of a dish — a small print agent on the restaurant's own PC polls for newly confirmed orders every 10 seconds and sends each one to the kitchen printer exactly once, automatically. No one at the till re-types the WhatsApp order onto a ticket. It shares the same Windows print queue as the restaurant's existing KOT software when there is one, specifically because running two separate direct connections to one physical printer causes real, confirmed conflicts — a constraint I only found by building against an actual restaurant PC, not a spec sheet.</p>
+        <p>Delivery orders get a second layer: once confirmed, the first active delivery agent is notified on WhatsApp with the full order and a map link, and drives it through <b>PACKED → PICKED → DELIVERED</b> by replying with those exact words — each update pushes live to the dashboard and triggers an automatic "it's on its way" / "enjoy your meal" message to the customer, with no dispatcher in the loop for a one- or two-rider operation.</p>
 
         <h2>What I built</h2>
-        <p>A WhatsApp-native commerce platform with POS-synced stock and an AI voice ordering option.</p><ul>
-          <li>WhatsApp Cloud API integration for in-chat ordering, no app install required</li>
-          <li>Real-time POS stock sync so WhatsApp orders and in-store sales share one inventory source of truth</li>
-          <li>AI voice calling agent that takes phone orders and logs them into the same system</li>
-          <li>A white-label AI chatbot product for restaurants' own websites</li>
-          <li>Restaurant-specific flow combining WhatsApp + voice + POS ordering in one package</li>
+        <p>A WhatsApp-native commerce platform with POS-synced stock, an AI voice ordering option, and a delivery workflow that runs itself.</p><ul>
+          <li>WhatsApp Cloud API integration for in-chat ordering by text, voice note or photo — no app install required</li>
+          <li>Real-time stock sync via a per-item in-stock switch, so a sold-out dish stops being offered the moment staff flip it off</li>
+          <li>Groq Whisper voice transcription feeding the same grounded, catalogue-only ordering logic as text orders</li>
+          <li>An explicit, editable clarifying-question rule set per item/category, chosen over RAG for a menu this size — and a guard against the AI ever falsely claiming an order is confirmed</li>
+          <li>Auto-print to the kitchen on confirmation, with zero staff re-entry, built to coexist with existing KOT printer software</li>
+          <li>A WhatsApp-driven delivery-agent workflow (PACKED → PICKED → DELIVERED) with automatic customer status messages</li>
+          <li>An AI voice calling agent and a white-label website chatbot built on the same ordering core, for customers who'd rather call or browse the business's own site</li>
         </ul>
 
         <h2>Outcome</h2>
-        <p>ChatCart Pro is live with a pilot supermarket in Tamil Nadu, India, validating the core WhatsApp-plus-POS-sync model in a real retail environment.</p>
+        <p>ChatCart Pro is live with a pilot supermarket in Tamil Nadu, India, and the restaurant build is live for Fine Dine Family Restaurant in the UAE, running against that restaurant's real ~335-item menu with the auto-print and delivery-agent workflow in production.</p>
         <div class="cs-stats">
-          <div><b>Live</b><span>pilot supermarket, Tamil Nadu</span></div><div><b>3</b><span>products: chat, voice, website bot</span></div><div><b>UAE &amp; India</b><span>target markets</span></div>
+          <div><b>335</b><span>real menu items the agent is grounded in</span></div><div><b>10s</b><span>poll interval for auto-print, zero staff re-entry</span></div><div><b>3</b><span>order channels in one queue: counter, WhatsApp, voice</span></div>
         </div>
-        <p>As the founder and sole product/engineering lead on this, I own everything from the WhatsApp integration logic to the voice agent's conversation design to the POS sync architecture — the kind of full-stack ownership that doesn't come up in an employed design role.</p>
+        <p>I don't have a formal, audited count yet of exactly what share of orders need zero human involvement end-to-end — that's a real gap in my own measurement, not a number I want to round up to sound more finished than it is. What I can say precisely: every order still requires an explicit customer CONFIRM, every item in every order is checked against the real catalogue before it's added, and the print and delivery-status workflows run with no staff re-entry once an order is confirmed.</p>
+
+        <h2>What I'd change</h2>
+        <p>The honest list: date and quantity extraction from free text is currently a lightweight regex pass, not a robust parser, and it's the most pronounced limitation on the restaurant build given how many dishes need a Half/Full size decision — I'd invest in a proper structured-extraction step next. I'd also build real dispatch/load-balancing for delivery agents instead of always assigning the first active one, which only holds up for a one- or two-rider operation. And I'd formally measure the no-human-involved order percentage instead of estimating it, because that's exactly the number a buyer or employer is going to ask for first.</p>
 
       </div>
 

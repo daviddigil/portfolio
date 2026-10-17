@@ -126,6 +126,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .cs-body li b,.cs-body p b{color:var(--text);font-weight:600}
 .cs-body li b.num,.cs-body p b.num{color:var(--core);text-shadow:0 0 16px rgba(127,233,255,.3)}
 .cs-pull{border-left:2px solid var(--accent);padding:4px 0 4px 24px;margin:34px 0;font-family:var(--serif);font-size:1.3rem;font-style:italic;color:var(--text);max-width:60ch;line-height:1.5}
+.cs-figure{margin:36px 0;max-width:72ch}
+.cs-figure img{width:100%;border-radius:16px;border:1px solid var(--line);background:#0A1422}
+.cs-figure figcaption{margin-top:10px;font-size:.84rem;color:var(--mute);line-height:1.5}
+.cs-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:36px 0}
+.cs-gallery figure{margin:0}
+.cs-gallery img{width:100%;border-radius:14px;border:1px solid var(--line);display:block}
+.cs-gallery figcaption{margin-top:8px;font-size:.82rem;color:var(--mute)}
+.cs-convo{background:#0A1422;border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:36px 0;max-width:62ch;font-size:.92rem;line-height:1.65}
+.cs-convo .who{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;display:block}
+.cs-convo .msg{margin-bottom:16px}
+.cs-convo .msg:last-child{margin-bottom:0}
+.cs-convo .bot{color:var(--core)}
+.cs-convo .user{color:var(--text)}
 
 .cs-side{position:sticky;top:110px;display:grid;gap:20px}
 .cs-box{background:rgba(10,20,34,.55);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:var(--r);padding:24px}
