@@ -96,12 +96,10 @@
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://daviddigil.com/"},
         {"@type": "ListItem", "position": 2, "name": "About", "item": "https://daviddigil.com/#about"},
-        {"@type": "ListItem", "position": 3, "name": "Design projects", "item": "https://daviddigil.com/#design"},
-        {"@type": "ListItem", "position": 4, "name": "Coding projects", "item": "https://daviddigil.com/#code"},
-        {"@type": "ListItem", "position": 5, "name": "Developer journey", "item": "https://daviddigil.com/#dev"},
-        {"@type": "ListItem", "position": 6, "name": "Email marketing", "item": "https://daviddigil.com/#email"},
-        {"@type": "ListItem", "position": 7, "name": "Work journey", "item": "https://daviddigil.com/#practice"},
-        {"@type": "ListItem", "position": 8, "name": "Contact", "item": "https://daviddigil.com/#contact"}
+        {"@type": "ListItem", "position": 3, "name": "Featured work", "item": "https://daviddigil.com/#featured"},
+        {"@type": "ListItem", "position": 4, "name": "Also: more work", "item": "https://daviddigil.com/#also"},
+        {"@type": "ListItem", "position": 5, "name": "Work journey", "item": "https://daviddigil.com/#practice"},
+        {"@type": "ListItem", "position": 6, "name": "Contact", "item": "https://daviddigil.com/#contact"}
       ]
     }
   ]
@@ -231,6 +229,17 @@ html.gs .card:hover{transform:none}
 .card.big .cover{height:auto;width:42%;min-height:280px}
 .card.big .body{padding:32px}
 .card.big h3{font-size:2rem}
+/* Featured work: the 3 flagship case studies, stacked and prominent */
+.featured-cards{grid-template-columns:1fr;gap:28px}
+.featured-cards .card.big{grid-column:1/-1;border-color:rgba(127,233,255,.25);box-shadow:0 0 0 1px rgba(127,233,255,.06)}
+.featured-cards .card.big:hover{border-color:var(--accent)}
+@media(max-width:900px){.featured-cards .card.big{flex-direction:column}.featured-cards .card.big .cover{width:100%;min-height:200px}}
+/* "Also": everything else, visually quieter so it reads as secondary, not equal-weight */
+.also-wrap{opacity:.92}
+.also-wrap .also-head h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+.also-wrap>.wrap.also-head{padding-top:90px;padding-bottom:0}
+.also-wrap section{padding-top:70px;padding-bottom:70px}
+.also-wrap section:first-of-type{padding-top:40px}
 .subs{display:flex;flex-direction:column;gap:8px;margin-top:8px}
 .subs a{display:flex;justify-content:space-between;padding:10px 14px;border:1px solid var(--line);border-radius:12px;font-size:.88rem;color:var(--mute);transition:.2s}
 .subs a:hover{color:var(--text);border-color:var(--accent);background:rgba(255,90,44,.06)}
@@ -407,9 +416,8 @@ nav:not(.solid) .btn::after{display:none}
     <a href="#top" class="logo">Digil<span>.</span></a>
     <div class="links">
       <a href="#about">About</a>
-      <a href="#design">Design</a>
-      <a href="#code">Code</a>
-      <a href="#email">Email</a>
+      <a href="#featured">Work</a>
+      <a href="#also">Also</a>
       <a href="#practice">Journey</a>
     </div>
     <a href="#contact" class="btn">Start a project</a>
@@ -452,20 +460,19 @@ nav:not(.solid) .btn::after{display:none}
   </div>
 </section>
 
-<!-- DESIGN PROJECTS -->
-<section id="design">
+<!-- FEATURED WORK -->
+<section id="featured">
   <div class="wrap">
     <div class="head rv">
       <div>
-        <div class="eyebrow">Selected work · 01</div>
-        <h2>Design <em>projects</em></h2>
-        <p class="lead">Product and UX design, from research and flows to polished Figma files and live shops.</p>
+        <div class="eyebrow">Flagship work</div>
+        <h2>Three deep <em>case studies</em></h2>
+        <p class="lead">The work I'd put in front of a design lead first: an enterprise e-commerce redesign, an AI commerce product I built and ship myself, and enterprise HR workflow design.</p>
       </div>
-      <span class="count">06 projects</span>
     </div>
-    <div class="cards">
+    <div class="cards featured-cards">
 
-      <div class="card rv" style="--c:#e2001a">
+      <div class="card big rv" style="--c:#e2001a">
         <div class="cover" style="--c1:#e2001a;--c2:#e2001a"><b>Würth<br>Online Shop</b></div>
         <div class="body">
           <div class="status-row"><span class="status-pill is-live">Live</span></div>
@@ -480,6 +487,71 @@ nav:not(.solid) .btn::after{display:none}
           </div>
         </div>
       </div>
+
+
+
+      <div class="card big rv" style="--c:#064e3b">
+        <div class="cover" style="--c1:#064e3b;--c2:#25d366"><b>ChatCart<br>Pro</b></div>
+        <div class="body">
+          <div class="status-row"><span class="status-pill is-live">Live</span></div>
+          <span class="tag">AI commerce · UAE &amp; India</span>
+          <h3>ChatCart Pro</h3>
+          <p>WhatsApp-native ordering for restaurants and grocery stores. Customers order in chat, stock syncs with the POS, and an AI voice agent takes calls. Live with a pilot supermarket in Tamil Nadu.</p>
+          <div class="subs">
+            <a href="https://chatcartpro.com" target="_blank" rel="noopener"><span>Main site</span><span>↗</span></a>
+            <a href="https://chatcartpro.com/ai-chatbot-for-website/" target="_blank" rel="noopener"><span>AI chatbot for websites</span><span>↗</span></a>
+            <a href="https://chatcartpro.com/ai-voice-calling-agent/" target="_blank" rel="noopener"><span>AI voice calling agent</span><span>↗</span></a>
+            <a href="https://chatcartpro.com/restaurant-pos-voice-chat/" target="_blank" rel="noopener"><span>Restaurant WhatsApp + Voice + POS ordering</span><span>↗</span></a>
+          </div>
+          <div class="pills"><span>WhatsApp Cloud API</span><span>Voice agents</span><span>POS sync</span></div>
+          <div class="cta-row">
+            <a class="btn ghost small" href="case-studies/chatcart-pro.html">Case study →</a>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="card big rv" style="--c:#1e3a8a">
+        <div class="cover" style="--c1:#1e3a8a;--c2:#60a5fa"><b>People<br>Core HR</b></div>
+        <div class="body">
+          <div class="status-row"><span class="status-pill is-prototype">Prototype</span></div>
+          <span class="tag">Enterprise HR · Workflows &amp; data</span>
+          <h3>People Core HR</h3>
+          <p>Role-based enterprise HR platform: a searchable employee directory, approval workflows and a workforce analytics module with UAE Emiratisation compliance tracking.</p>
+
+          <div class="pills"><span>Web app</span><span>Vercel</span></div>
+          <div class="cta-row">
+            <a class="btn ghost small" href="https://peoplecorehr-demoprototype.vercel.app/" target="_blank" rel="noopener">View live demo ↗</a>
+            <a class="btn ghost small" href="case-studies/people-core-hr.html">Case study →</a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ALSO: more design & code work, full-stack/AI journey, email marketing -->
+<section class="also-wrap" id="also">
+  <div class="wrap also-head rv">
+    <div class="eyebrow">Also</div>
+    <h2>More <em>work</em>, and how I build it</h2>
+    <p class="lead">Further design and coding projects, the full-stack and AI path behind them, and the email marketing work I also do.</p>
+  </div>
+
+<section id="design">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <div class="eyebrow">More design work</div>
+        <h2>Design <em>projects</em></h2>
+        <p class="lead">Product and UX design, from research and flows to polished Figma files and live shops.</p>
+      </div>
+      <span class="count">05 projects</span>
+    </div>
+    <div class="cards">
 
       <div class="card rv" style="--c:#0f766e">
         <div class="cover" style="--c1:#0f766e;--c2:#2dd4bf"><b>Nextipz</b></div>
@@ -569,49 +641,13 @@ nav:not(.solid) .btn::after{display:none}
   <div class="wrap">
     <div class="head rv">
       <div>
-        <div class="eyebrow">Selected work · 02</div>
+        <div class="eyebrow">More coding work</div>
         <h2>Coding <em>projects</em></h2>
         <p class="lead">Products I designed and built myself: live, in development or sold.</p>
       </div>
-      <span class="count">05 projects</span>
+      <span class="count">04 projects</span>
     </div>
     <div class="cards">
-
-      <div class="card big rv" style="--c:#064e3b">
-        <div class="cover" style="--c1:#064e3b;--c2:#25d366"><b>ChatCart<br>Pro</b></div>
-        <div class="body">
-          <div class="status-row"><span class="status-pill is-live">Live</span></div>
-          <span class="tag">AI commerce · UAE &amp; India</span>
-          <h3>ChatCart Pro</h3>
-          <p>WhatsApp-native ordering for restaurants and grocery stores. Customers order in chat, stock syncs with the POS, and an AI voice agent takes calls. Live with a pilot supermarket in Tamil Nadu.</p>
-          <div class="subs">
-            <a href="https://chatcartpro.com" target="_blank" rel="noopener"><span>Main site</span><span>↗</span></a>
-            <a href="https://chatcartpro.com/ai-chatbot-for-website/" target="_blank" rel="noopener"><span>AI chatbot for websites</span><span>↗</span></a>
-            <a href="https://chatcartpro.com/ai-voice-calling-agent/" target="_blank" rel="noopener"><span>AI voice calling agent</span><span>↗</span></a>
-            <a href="https://chatcartpro.com/restaurant-pos-voice-chat/" target="_blank" rel="noopener"><span>Restaurant WhatsApp + Voice + POS ordering</span><span>↗</span></a>
-          </div>
-          <div class="pills"><span>WhatsApp Cloud API</span><span>Voice agents</span><span>POS sync</span></div>
-          <div class="cta-row">
-            <a class="btn ghost small" href="case-studies/chatcart-pro.html">Case study →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="card rv" style="--c:#1e3a8a">
-        <div class="cover" style="--c1:#1e3a8a;--c2:#60a5fa"><b>People<br>Core HR</b></div>
-        <div class="body">
-          <div class="status-row"><span class="status-pill is-prototype">Prototype</span></div>
-          <span class="tag">Enterprise HR · Workflows &amp; data</span>
-          <h3>People Core HR</h3>
-          <p>Role-based enterprise HR platform: a searchable employee directory, approval workflows and a workforce analytics module with UAE Emiratisation compliance tracking.</p>
-
-          <div class="pills"><span>Web app</span><span>Vercel</span></div>
-          <div class="cta-row">
-            <a class="btn ghost small" href="https://peoplecorehr-demoprototype.vercel.app/" target="_blank" rel="noopener">View live demo ↗</a>
-            <a class="btn ghost small" href="case-studies/people-core-hr.html">Case study →</a>
-          </div>
-        </div>
-      </div>
 
       <div class="card rv" style="--c:#831843">
         <div class="cover" style="--c1:#831843;--c2:#f472b6"><b>EduPulse</b></div>
@@ -812,6 +848,8 @@ nav:not(.solid) .btn::after{display:none}
       <span>Figma</span><span>Photoshop</span><span>Illustrator</span><span>After Effects</span><span>Premiere Pro</span><span>InDesign</span><span>Dreamweaver</span><span>Final Cut</span><span>Spline</span><span>Webflow</span><span>WordPress</span><span>Mailchimp</span><span>HTML / CSS / JS</span><span>Notion</span><span>Jira</span><span>Countly</span>
     </div>
   </div>
+</section>
+
 </section>
 
 <!-- WORK JOURNEY -->
