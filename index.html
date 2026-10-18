@@ -257,24 +257,33 @@ html.gs .card:hover{transform:none}
 .gh b{color:var(--text);font-weight:500}
 
 /* EMAIL */
-.mail .grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.mail ul{list-style:none;display:grid;gap:12px;margin-top:32px}
-.mail li{display:flex;gap:16px;padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:var(--card);transition:.25s}
-.mail li:hover{border-color:var(--accent2);transform:translateX(6px)}
-.mail li em{font-family:var(--mono);font-style:normal;color:var(--accent2);font-size:.85rem;padding-top:2px}
-.mail li b{display:block;font-weight:500}
-.mail li span{color:var(--mute);font-size:.9rem}
-.inbox{background:#f4f1ea;color:#15151a;border-radius:var(--r);padding:26px;box-shadow:0 40px 80px -30px rgba(255,90,44,.35);transform:rotate(2deg);transition:transform .4s}
-.inbox:hover{transform:rotate(0)}
-.inbox .bar{display:flex;gap:6px;margin-bottom:18px}
-.inbox .bar i{width:10px;height:10px;border-radius:50%;background:#d8d3c7}
-.inbox .sub{font-family:var(--mono);font-size:.72rem;color:#777;margin-bottom:6px}
-.inbox h4{font-family:var(--serif);font-size:1.9rem;font-weight:500;line-height:1.05;margin-bottom:12px}
-.inbox p{font-size:.9rem;color:#444;margin-bottom:18px}
-.inbox .fake{display:inline-block;background:#15151a;color:#fff;padding:11px 22px;border-radius:999px;font-size:.85rem;font-weight:500}
-.inbox hr{border:0;border-top:1px solid #ddd8cb;margin:22px 0 14px}
-.flow{display:flex;gap:8px;flex-wrap:wrap;font-family:var(--mono);font-size:.68rem}
-.flow span{padding:5px 10px;border-radius:999px;background:#e7e2d6}
+.mail-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:50px;align-items:start;margin-top:50px}
+.mail-grid ul{list-style:none;display:grid;gap:12px}
+.mail-grid li{display:flex;gap:16px;padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:var(--card);transition:.25s}
+.mail-grid li:hover{border-color:var(--accent2);transform:translateX(6px)}
+.mail-grid li em{font-family:var(--mono);font-style:normal;color:var(--accent2);font-size:.85rem;padding-top:2px}
+.mail-grid li b{display:block;font-weight:500}
+.mail-grid li span{color:var(--mute);font-size:.9rem}
+.mail-stats{display:grid;gap:14px}
+.mail-stats div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.mail-stats b{font-family:var(--serif);font-size:2.4rem;font-weight:400;display:block;color:var(--accent2)}
+.mail-stats span{color:var(--mute);font-size:.85rem;display:block;margin-top:4px}
+@media(max-width:860px){.mail-grid{grid-template-columns:1fr}}
+
+.mail-gallery-head{margin-top:70px;margin-bottom:28px}
+.mail-gallery-head h3{font-family:var(--serif);font-weight:500;font-size:1.5rem;margin-bottom:8px}
+.mail-gallery-head p{color:var(--mute);font-size:.95rem}
+.mail-gallery{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:auto auto;gap:18px}
+.mail-gallery .mail-card:first-child{grid-row:span 2}
+.mail-card{position:relative;display:block;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--card);transition:transform .3s,border-color .3s}
+.mail-card:hover{transform:translateY(-4px);border-color:var(--accent2)}
+.mail-card img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;aspect-ratio:3/4}
+.mail-gallery .mail-card:first-child img{aspect-ratio:3/5}
+.mail-card-label{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;font-size:.85rem;font-weight:500;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.85),transparent);display:flex;justify-content:space-between;align-items:center}
+.mail-card-label em{font-style:normal;opacity:.8;transition:transform .2s}
+.mail-card:hover .mail-card-label em{transform:translateX(3px)}
+@media(max-width:980px){.mail-gallery{grid-template-columns:1fr 1fr}.mail-gallery .mail-card:first-child{grid-column:span 2;grid-row:auto}.mail-gallery .mail-card:first-child img{aspect-ratio:16/9}}
+@media(max-width:600px){.mail-gallery{grid-template-columns:1fr}.mail-gallery .mail-card:first-child{grid-column:auto}}
 @media(max-width:860px){.mail .grid{grid-template-columns:1fr}}
 
 /* PRACTICE */
@@ -399,7 +408,6 @@ nav:not(.solid) .btn::after{display:none}
 .tl li::before{background:var(--accent);box-shadow:0 0 0 5px rgba(127,233,255,.15),0 0 14px var(--accent)}
 .row:hover{background:linear-gradient(90deg,rgba(127,233,255,.06),transparent)}
 .subs a:hover{background:rgba(127,233,255,.06)}
-.inbox{box-shadow:0 40px 80px -30px rgba(127,233,255,.3)}
 
 /* section dividers: a thin thread drawn left to right */
 .divider{position:absolute;top:0;left:0;right:0;height:1px;z-index:1;pointer-events:none;background:linear-gradient(90deg,transparent,#7FE9FF 30%,#9B6BFF 70%,transparent);box-shadow:0 0 12px rgba(127,233,255,.6);transform:scaleX(0);transform-origin:left;transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
@@ -806,28 +814,53 @@ nav:not(.solid) .btn::after{display:none}
 
 <!-- EMAIL MARKETING -->
 <section class="mail" id="email">
-  <div class="wrap grid">
-    <div class="rv">
-      <div class="eyebrow">Also · Growth</div>
-      <h2>Email &amp; newsletter <em>marketing</em></h2>
-      <p class="lead">Design and marketing in one head. I plan, write, design and ship emails that get opened and acted on.</p>
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <div class="eyebrow">Also · Growth</div>
+        <h2>Email &amp; newsletter <em>marketing</em></h2>
+        <p class="lead">Design and marketing in one head. I designed and shipped every external newsletter at Würth UAE in dark and light mode, plus the automated lifecycle flows behind them.</p>
+      </div>
+    </div>
+    <div class="mail-grid rv">
       <ul>
-        <li><em>01</em><div><b>Email newsletter design</b><span>Responsive HTML/CSS newsletters and banners, designed in Figma and built to render cleanly across clients.</span></div></li>
-        <li><em>02</em><div><b>Automated marketing loops</b><span>Lifecycle email flows that lifted customer engagement by 12%.</span></div></li>
+        <li><em>01</em><div><b>Email newsletter design</b><span>Responsive HTML/CSS newsletters and banners, designed in Figma and shipped in both dark and light mode.</span></div></li>
+        <li><em>02</em><div><b>Automated marketing loops</b><span>Lifecycle email and push journeys that lifted customer engagement by 12%.</span></div></li>
         <li><em>03</em><div><b>Mobile push notifications</b><span>Strategic push sequences designed and tracked against performance metrics.</span></div></li>
         <li><em>04</em><div><b>CRM &amp; campaign tools</b><span>Salesforce and Mango CRM UX, Mailchimp, plus Microsoft Advertising and Google Digital Marketing certified.</span></div></li>
       </ul>
-    </div>
-    <div class="rv">
-      <div class="inbox">
-        <div class="bar"><i></i><i></i><i></i></div>
-        <div class="sub">Subject: Your cart is waiting (and so is the discount)</div>
-        <h4>Good design gets opened. Great design gets clicked.</h4>
-        <p>Clear hierarchy, one job per email, a call to action you can't miss.</p>
-        <span class="fake">Shop the drop →</span>
-        <hr>
-        <div class="flow"><span>Welcome</span><span>→</span><span>Nurture</span><span>→</span><span>Convert</span><span>→</span><span>Retain</span></div>
+      <div class="mail-stats">
+        <div><b>22%</b><span>newsletter open rate</span></div>
+        <div><b>1.2%</b><span>click rate</span></div>
+        <div><b>12%</b><span>engagement lift from lifecycle flows</span></div>
       </div>
+    </div>
+
+    <div class="mail-gallery-head rv">
+      <h3>Real, shipped newsletters</h3>
+      <p>Production Würth UAE emails I designed — not mockups. Click any one to open the full send.</p>
+    </div>
+    <div class="mail-gallery rv">
+      <a class="mail-card" href="case-studies/img/email-redstripe-powertools-full.jpg" target="_blank" rel="noopener">
+        <img src="case-studies/img/email-redstripe-powertools-preview.jpg" alt="Würth Redstripe Power Tools newsletter: dark hero with a wireframe hand gripping a cordless power tool, headline 'Master Your Craft with High-Performance Redstripe Power Tools'." loading="lazy">
+        <span class="mail-card-label">Redstripe Power Tools <em>↗</em></span>
+      </a>
+      <a class="mail-card" href="case-studies/img/email-polishing-powertools-full.jpg" target="_blank" rel="noopener">
+        <img src="case-studies/img/email-polishing-powertools-preview.jpg" alt="Würth automotive surface finishing newsletter: product photography of polishing compounds and a rotary polisher, headline 'Master Flawless Paint Correction &amp; Heavy-Duty Performance'." loading="lazy">
+        <span class="mail-card-label">Polishing &amp; Power Tools <em>↗</em></span>
+      </a>
+      <a class="mail-card" href="case-studies/img/email-free-monitor-full.jpg" target="_blank" rel="noopener">
+        <img src="case-studies/img/email-free-monitor-preview.jpg" alt="Würth Free Monitor weekend-offer newsletter: dark mode, a 24-inch LED monitor on a red light-trail background, 'Claim Your Free Monitor Today'." loading="lazy">
+        <span class="mail-card-label">Free Monitor Offer <em>↗</em></span>
+      </a>
+      <a class="mail-card" href="case-studies/img/email-october-gifts-full.jpg" target="_blank" rel="noopener">
+        <img src="case-studies/img/email-october-gifts-preview.jpg" alt="Würth October gifts newsletter, light mode: a four-card grid of free gifts (mouse pad, mug, water bottle, backpack) each tied to a spend threshold and coupon code." loading="lazy">
+        <span class="mail-card-label">October Gifts <em>↗</em></span>
+      </a>
+      <a class="mail-card" href="case-studies/img/email-brake-cleaner-full.jpg" target="_blank" rel="noopener">
+        <img src="case-studies/img/email-brake-cleaner-preview.jpg" alt="Würth Brake Cleaner in-store offer newsletter: product shot of a brake cleaner spray can against stacked boxes, 'Buy 4 Boxes of Brake Cleaner 500ML', AED pricing." loading="lazy">
+        <span class="mail-card-label">Brake Cleaner Offer <em>↗</em></span>
+      </a>
     </div>
   </div>
 </section>
