@@ -211,6 +211,7 @@ html.gs .card:hover{transform:none}
 .card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:0;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,border-color .3s}
 .card:hover{transform:translateY(-6px);border-color:var(--c,var(--accent))}
 .cover{height:170px;position:relative;display:grid;place-items:center;overflow:hidden;background:linear-gradient(135deg,var(--c1),var(--c2))}
+.cover img{width:100%;height:100%;object-fit:cover;object-position:center}
 .cover::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 0,rgba(255,255,255,.25),transparent 55%)}
 .cover b{font-family:var(--serif);font-weight:500;font-size:2.4rem;color:rgba(255,255,255,.92);letter-spacing:-.02em;z-index:1;text-align:center;padding:0 14px;line-height:1.05}
 .cover .arrow{position:absolute;top:14px;right:14px;z-index:2;width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.35);display:grid;place-items:center;transition:transform .3s,background .3s}
@@ -664,7 +665,7 @@ nav:not(.solid) .btn::after{display:none}
     <div class="cards">
 
       <div class="card rv" style="--c:#1d3fae">
-        <div class="cover" style="--c1:#13296e;--c2:#2a4fd6"><b>CROVÉ<br>Bakery &amp; Coffee</b></div>
+        <div class="cover" style="--c1:#13296e;--c2:#2a4fd6"><img src="case-studies/img/crove/final-identity-lockup.jpg" alt="CROVÉ logo lockup on a cobalt blue background" loading="lazy"></div>
         <div class="body">
           <div class="status-row"><span class="status-pill is-shipped">Brand identity</span></div>
           <span class="tag">Bakery &amp; Coffee · Full brand system</span>
